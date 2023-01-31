@@ -1,0 +1,34 @@
+﻿{
+	// you can define multiple editors
+	propertyEditors: [
+		{
+			/*this must be a unique alias*/
+			alias: "ComputedProperty",
+			/*the name*/
+			name: "Computed Property",
+			/*the icon*/
+			icon: "icon-calculator",
+			/*grouping for "Select editor" dialog*/
+			group: "Custom Editors",
+			/*the HTML file we will load for the editor*/
+			editor: {
+				view: "~/App_Plugins/ComputedProperty/computedproperty.html"
+			},
+			prevalues: {
+				fields: [
+					{
+						label: "Formula",
+						description: "Specify the formula to calculate",
+						key: "formula",
+						view: "textstring"
+					}
+				]
+			}
+		}
+	]
+	,
+	// array of files we want to inject into the application on app_start
+	javascript: [
+		'~/App_Plugins/ComputedProperty/computedproperty.controller.js'
+	]
+}

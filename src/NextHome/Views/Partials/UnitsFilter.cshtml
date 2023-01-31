@@ -1,0 +1,144 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    bool inlineFormEnabled = false;
+    bool isRTL = Model.CurrentCulture.TwoLetterISOLanguageName == "ar";
+    IEnumerable<IPublishedContent> unitsList = new List<IPublishedContent>();
+    List<string> unitTypes = new List<string>();
+    string[] unitTypesArr = new string[0];
+    if (ViewData["UnitsList"] != null)
+    {
+        unitsList = (IEnumerable<IPublishedContent>)ViewData["UnitsList"];
+
+        foreach (var item in unitsList)
+        {
+            unitTypes.Add(item.GetPropertyValue<KeyValuePair<string, string>>("unit_type").Value);
+        }
+
+        unitTypesArr = unitTypes.Distinct().ToArray();
+    }
+}
+
+<section id="units-section">
+    <div class="container">
+        <div id="portfolio-filter" class="cbp-l-filters-alignCenter">
+            <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">
+                @Umbraco.GetDictionaryValue("ShowAll")
+                <div class="cbp-filter-counter"></div>
+            </div>
+            @foreach (var type in unitTypesArr)
+            {
+                <div data-filter=".@type" class="cbp-filter-item">
+                    @type
+                    <div class="cbp-filter-counter"></div>
+                </div>
+            }
+        </div>
+        <div id="portfolio" class="cbp">
+            @foreach (var projUnit in unitsList)
+            {
+                <div class="col-md-4 col-sm-6 cbp-item overlay-item @(projUnit.GetPropertyValue<KeyValuePair<string,string>>("Unit_Type").Value)">
+                    <div class="property_item latest_page_box">
+                        <div class="text-title">
+                            <h3><a href="@Umbraco.NiceUrl(projUnit.Id)">@projUnit.Name</a></h3>
+                        </div>
+                        <div class="image">
+                            <img src="@Umbraco.Media(projUnit.GetPropertyValue<Image>("Unit_MainImage").Id).NiceUrl()" alt="@projUnit.Name" class="img-responsive img-370-289 ">
+                            <div class="overlay">
+                                <div class="centered"><a class="link_arrow white_border" href="@Umbraco.NiceUrl(projUnit.Id)">@Umbraco.GetDictionaryValue("ViewDetails")</a></div>
+                            </div>
+                            <div class="overlay-form">
+                                <h4><span class="color_green"> @Umbraco.GetDictionaryValue("AskForPrice")</span></h4>
+                                <div class="line_3"></div>
+                                <div class="property-query-area">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="single-query">
+                                                <input class="keyword-input" placeholder='@Umbraco.GetDictionaryValue("FullName")' type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="single-query">
+                                                <input class="keyword-input" placeholder='@Umbraco.GetDictionaryValue("Mobile")' type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="single-query">
+                                                <input class="keyword-input" placeholder='@Umbraco.GetDictionaryValue("Email")' type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="col-md-6" style="padding:0px;">
+                                                <button class="overlay-btn">
+                                                    <i class="fa fa-send"></i>
+                                                    @Umbraco.GetDictionaryValue("Send")
+                                                </button>
+                                            </div>
+                                            <div class="col-md-2">
+
+                                            </div>
+                                            <div class="col-md-4" style="padding:0px;">
+                                                <button class="overlay-btn">
+                                                    <i class="fa fa-close"></i>
+                                                    @Umbraco.GetDictionaryValue("Close")
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="property_meta">
+                            <span><i class="fa fa-object-group"></i>@(projUnit.GetPropertyValue("Unit_Area") + " " + Umbraco.GetDictionaryValue("AreaM"))<sup>2</sup></span>
+                            <span><i class="fa fa-bed"></i>@(projUnit.GetPropertyValue("Unit_BedRooms") + " " + Umbraco.GetDictionaryValue("BedRooms"))</span>
+                            <span><i class="fa fa-bath"></i>@(projUnit.GetPropertyValue("Unit_Bathrooms") + " " + Umbraco.GetDictionaryValue("BathRooms"))</span>
+                        </div>
+                        @if (projUnit.GetPropertyValue<bool>("unit_IsSoldOut"))
+                        {
+                            <div class='price'><span class="tag soldout">@Umbraco.GetDictionaryValue("SoldOut")</span></div>
+                        }
+                        else
+                        {
+                            <div class='price'><span class="tag">@Umbraco.GetDictionaryValue("Available")</span></div>
+                        }
+                        <div class="btn-ask" unitname="@projUnit.Name" inlineform="@inlineFormEnabled">
+                            <a href="#."><i class="icon-chat"></i>@Umbraco.GetDictionaryValue("AskForPrice")</a>
+                        </div>
+                        @*<div class="proerty_content">*@
+                        @*<div class="proerty_text">
+            <h3><a href="@Umbraco.NiceUrl(projUnit.Id)">@projUnit.Name</a></h3>
+            <p>@(Model.Content.GetPropertyValue<KeyValuePair<string, string>>("Project_District").Value), @(Model.Content.GetPropertyValue<KeyValuePair<string, string>>("Project_City").Value)</p>
+            <div class="p-font-15 ellipsis">@Html.Raw(projUnit.GetPropertyValue("Unit_Description"))</div>
+        </div>*@
+
+                        @*@{
+
+            if (isRTL)
+            {
+                <div class="favroute clearfix">
+                    <p class="pull-md-right">
+                        @(projUnit.HasValue("Unit_Price") ? projUnit.GetPropertyValue<decimal>("Unit_Price").ToString("N0") + " " + Umbraco.GetDictionaryValue("Currency") : "")
+                    </p>
+                    <ul class="pull-left">
+                        <li><a href="@Umbraco.NiceUrl(projUnit.Id)"><i class="icon-arrow-left"></i></a></li>
+                    </ul>
+                </div>
+            }
+            else
+            {
+                <div class="favroute clearfix">
+                    <p class="pull-md-left">@(projUnit.HasValue("Unit_Price") ? projUnit.GetPropertyValue<decimal>("Unit_Price").ToString("N0") + " " + Umbraco.GetDictionaryValue("Currency") : "")</p>
+                    <ul class="pull-right">
+                        <li><a href="@Umbraco.NiceUrl(projUnit.Id)"><i class="icon-arrow-right"></i></a></li>
+                    </ul>
+                </div>
+            }
+        }*@
+
+                        @*</div>*@
+                    </div>
+            </div>
+        }
+        </div>
+        </div>
+    </section>

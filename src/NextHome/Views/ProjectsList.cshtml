@@ -1,0 +1,80 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ProjectsList>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "InnerPage.cshtml";
+    var projects = Model.Content.Children("Project");
+
+    var dictionary = new Umbraco.Web.Dictionary.DefaultCultureDictionary(Model.CurrentCulture);
+    var projectTypes = dictionary.GetChildren("ProjectType");
+    
+    System.Text.StringBuilder strLocations = new System.Text.StringBuilder();
+    foreach (var proj in projects)
+    {
+        strLocations.Append("locations.push({");
+        strLocations.Append("lat:" + proj.GetPropertyValue<string>("Project_Latitude"));
+        strLocations.Append(",lng:" + proj.GetPropertyValue<string>("Project_Longitude"));
+        strLocations.Append(",markerUrl:'" + (proj.HasValue("Project_MapMarker")? proj.GetPropertyValue<Image>("Project_MapMarker").Url: String.Empty) + "'");
+        strLocations.Append(",title:'" + proj.Name+"'");
+        strLocations.Append(",subtitle:'" + proj.GetPropertyValue<string>("Project_FullAddress")+"'");
+        strLocations.Append(",imgUrl:'" + proj.GetPropertyValue<Image>("Project_MainImage").Url + "'");
+        strLocations.Append("});");
+     }
+}
+
+
+
+<section id="news-section" class="news-section-details projects_3 bottom30">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in projects)
+            {
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="latest_page_box">
+                        <div class="news_image" style="background-image: url('@(item.GetPropertyValue<Image>("Project_MainImage").Url)'); background-position: center center; background-size: cover;">
+                        </div>
+                        <div class="news_padding">
+                            <h3>@item.Name</h3>
+                            <div class="ellipsis">@Html.Raw(item.GetPropertyValue("Project_Description"))</div>
+                            <br />
+                            <div class="project-links">
+                                @foreach (var projType in projectTypes)
+                                {
+                                    if (item.GetPropertyValue<nuPickers.Picker>("Project_Type").PickedKeys.Contains(@projType.Key))
+                                    {
+                                        <a href="@URLDecorator(Umbraco.NiceUrl(item.Id),@projType.Value)">@projType.Value</a>
+                                        <span>|</span>
+                                    }
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    
+    <div>
+        <div id="map_canvas"></div>
+    </div>
+</section>
+
+@helper URLDecorator(string url, string projType)
+{
+    @* Ensure that we have a collection of pages *@
+
+    List<string> urlSegments = ((string[])url.Split('/')).ToList();
+
+    urlSegments.Insert(2, projType.ToLower());
+
+    @String.Join("/", urlSegments);
+}
+
+<script>
+    $(document).ready(function () {
+        var locations = [];
+        @(Html.Raw(strLocations.ToString()))
+
+        initializeMap('map_canvas', locations);
+    })
+</script>

@@ -1,0 +1,95 @@
+﻿<umb-panel ng-controller="lstInquiryRequestController">
+    <umb-header>
+        <h1>Inquiries/Request</h1>
+    </umb-header>
+
+    <div class="umb-panel-body">
+        <div class="umb-pane">
+
+            <div class="umb-sub-header">
+
+                <div class="btn-group" ng-show="isAnythingSelected()">
+                    <a class="btn btn-danger" ng-disabled="actionInProgress" ng-click="delete()" prevent-default="">
+                        <localize key="actions_delete">Delete</localize>
+                    </a>
+                </div>
+
+                <form class="form-search pull-right ng-pristine ng-valid" novalidate="">
+                    <div class="inner-addon left-addon">
+                        <i class="icon icon-search"></i>
+                        <input type="text" class="form-control ng-pristine ng-valid" localize="placeholder" placeholder="Type to search..." ng-model="searchFilter" prevent-enter-submit="" no-dirty-check="" ng-change="search(searchFilter)">
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="umb-listview">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <a href="#" prevent-default class="sortable" ng-click="order('CreationDate')">Date</a>
+                                <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'CreationDate'"></i>
+                            </td>
+                            <td>
+                                <a href="#" prevent-default class="sortable" ng-click="order('FullName')">Full Name</a>
+                                <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'FullName'"></i>
+                            </td>
+                            <td>
+                                <a href="#" prevent-default class="sortable" ng-click="order('ProjectName')">Project Name</a>
+                                <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'ProjectName'"></i>
+                            </td>
+                            <td>
+                                <a href="#" prevent-default>Message</a>
+                                <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'Message'"></i>
+                            </td>
+                            <td>
+                                <a href="#" prevent-default>Mobile No</a>
+                                <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'MobileNo'"></i>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="p in people" ng-class="{selected: isRowSelected(p.id)}">
+                            <td style="width: 5%">
+                                <i class="icon icon-edit"></i>
+                                <input type="checkbox" name="selectedItems[]" value="{{p.id}}" ng-checked="isRowSelected(p.id)" ng-click="toggleSelection(p.id)" />
+                            </td>
+                            <td style="width:15%">
+                                {{p.CreationDate | date :  "dd-MM-yyyy"}}
+                            </td>
+                            <td style="width:15%">
+                                {{p.FullName}}
+                            </td>
+                            <td style="width:15%">{{p.ProjectName}}</td>
+                            <td style="width:40%;">
+                                <div style="width:400px;white-space: nowrap; overflow:hidden; text-overflow: ellipsis;">
+                                    <a style="cursor:pointer;" ng-click="openDetails(p)">{{p.Message}}</a>
+                                </div>
+                            </td>
+                            <td style="width:10%">{{p.MobileNo}}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot ng-show="totalPages > 1">
+                        <tr>
+                            <th colspan="5">
+                                <div class="pagination pagination-right">
+                                    <ul>
+                                        <li ng-class="{disabled: currentPage == 1}">
+                                            <a href ng-click="prevPage()">Prev</a>
+                                        </li>
+                                        <li ng-repeat="i in getNumber(totalPages) track by $index" ng-click="setPage($index+1)"><span>{{$index+1}}</span></li>
+                                        <li ng-class="{disabled: currentPage == totalPages}">
+                                            <a href ng-click="nextPage()">Next</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</umb-panel>

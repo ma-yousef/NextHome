@@ -1,0 +1,42 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ProjectUpdates>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "InnerPage.cshtml";
+    List<IPublishedContent> projUpdates = Model.Content.Children.ToList();
+    var isRTL = Model.CurrentCulture.TwoLetterISOLanguageName == "en";
+}
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-uppercase text-center"><span class="color-green">@Model.Content.Parent.Name</span></h2>
+            <div class="line_1-1"></div>
+            <div class="line_2-2"></div>
+            <div class="line_3-3"></div>
+        </div>
+    </div>
+<!--===== Timeline =====-->
+<section class="timeline margin_bottom125">
+    <div class="container">
+        
+        <div class="row">
+            @for (int i = 0; i < projUpdates.Count(); i++)
+            {
+                var item = projUpdates[i];
+                <div class="timeline-item mt-30">
+                    <div class="timeline-img"></div>
+                    <div class='timeline-content timeline-card @(isRTL? (Math.Ceiling((decimal)i % (decimal)2) > 0 ? "js--fadeInLeft" : "js--fadeInRight") : (Math.Ceiling((decimal)i % (decimal)2) > 0 ? "js--fadeInRight" : "js--fadeInLeft"))'>
+                        <div class="timeline-slider owl-carousel">
+                            @foreach (var img in item.GetPropertyValue<IEnumerable<IPublishedContent>>("timeline_Images"))
+                            {
+                                <div class="timeline-img-header" style="background-image: url('@(img.Url)'); background-position: center center; background-size: cover;"></div>
+                            }
+                        </div>
+                        <div class="date">@(item.GetPropertyValue<DateTime>("timeline_Date").ToString("MMM dd, yyyy", System.Globalization.CultureInfo.GetCultureInfo("en-us", "en")))</div>
+                        <h2 class="timeline-caption">@item.Name</h2>
+                        <div class="timeline-text">@(item.GetPropertyValue("timeline_Description"))</div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

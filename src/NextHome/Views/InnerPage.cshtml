@@ -1,0 +1,43 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Master.cshtml";
+
+    var ancestorsList = CurrentPage.Ancestors().Where("DocumentTypeAlias != \"dummy\"").OrderBy("Level");
+    var imgUrl = @Url.Content(Umbraco.Media(Umbraco.Field("global_HeaderImage", recursive: true).ToString()).NiceUrl());
+
+    var pageName = @Umbraco.Field("pageName").ToString(); ;
+
+    bool isRTL = Model.CurrentCulture.TwoLetterISOLanguageName == "ar";
+    //if(!String.IsNullOrEmpty(@Umbraco.Field("pagealias").ToString()))
+    //{
+    //    pageName = @Umbraco.Field("pagealias").ToString();
+    //}
+    //else
+    //{
+    //    pageName = @Umbraco.Field("pageName").ToString();
+    //}
+}
+
+<!--===== PAGE TITLE =====-->
+<!-- PAGE TITLE -->
+<div class="page-title page-main-section parallaxie" style='background-image:url(@imgUrl);'>
+    <div class="container text-uppercase text-center">
+        <div class="main-title">
+            <h1>@Umbraco.Field("pageName")</h1>
+            <h5>@Umbraco.Field("global_Solgan", recursive: true)</h5>
+            @*<div class="line_4"></div>
+            <div class="line_5"></div>*@
+            <div class="line_6"></div>
+            @foreach (var item in ancestorsList)
+            {
+                <a href="@Umbraco.NiceUrl(item.id)">@Umbraco.Field(item, "page_Alias", altFieldAlias :"pageName")</a><span><i class='@(isRTL? "fa fa-angle-double-left": "fa fa-angle-double-right")' aria-hidden="true"></i></span>
+            }
+            <a href="#.">@Umbraco.Field("page_Alias", altFieldAlias :"pageName")</a>
+        </div>
+    </div>
+</div>
+<!-- PAGE TITLE -->
+
+@RenderBody()
+
+

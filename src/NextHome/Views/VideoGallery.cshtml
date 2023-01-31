@@ -1,0 +1,31 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.VideoGallery>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using NextHome.Helpers;
+@{
+    Layout = "InnerPage.cshtml";
+
+    var siteRoot = Model.Content.Site();
+
+    IEnumerable<Videolizer.Umbraco.UmbVideolizerVideo> videos = siteRoot.Descendants("project").SelectMany(i => i.GetGridVideos("Project_Videos")).ToList();
+    string[] videoUrls = videos.Select(i => i.GetEmbedUrl()).Distinct().ToArray();
+}
+
+<section id="project" class="padding">
+    <div class="container">
+        <div class="row">
+            @foreach (string vidUrl in videoUrls)
+            {
+                <div class="col-md-4 margin-bottom-25">
+                    <div class="embed-responsive embed-responsive-16by9 videolizerWrapper image">
+                        <iframe class="embed-responsive-item" src="@vidUrl" width="600" height="600"></iframe>
+                        <div class="overlay">
+                            <a href="@vidUrl" class="fancybox centered" data-fancybox="videos">
+                                <i class="icon-focus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

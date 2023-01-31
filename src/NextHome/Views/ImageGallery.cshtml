@@ -1,0 +1,44 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ImageGallery>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "InnerPage.cshtml";
+
+    var siteRoot = Model.Content.Site();
+
+    IEnumerable<IPublishedContent> projects = siteRoot.Descendants("project");
+}
+
+<section id="project" class="padding">
+    <div class="container">
+        <div id="portfolio" class="cbp">
+            @foreach (var proj in projects)
+            {
+
+                <div class="cbp-item" style="max-width:33%">
+                    <div class="image">
+                        <img src="@(proj.GetPropertyValue<Image>("Project_MainImage").Url)" alt="@proj.Name">
+                        <div class="overlay">
+                            <a href="@(proj.GetPropertyValue<Image>("Project_MainImage").Url)" class="fancybox centered" data-fancybox="@proj.Id">
+                                <i class="icon-focus"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="top10">
+                        <h3 style="font-weight:normal; line-height:normal; text-align:center;"><a href="@(proj.GetPropertyValue<Image>("Project_MainImage").Url)">@proj.Name</a></h3>
+                    </div>
+                </div>
+
+                if (proj.HasValue("project_images"))
+                {
+                    foreach (var img in proj.GetPropertyValue<IEnumerable<IPublishedContent>>("project_images"))
+                    {
+                        <a href="@img.Url" data-fancybox="@proj.Id" class="fancybox hidden">
+                            <img src="@img.Url" alt="@proj.Name">
+                        </a>
+                    }
+                }
+            }
+        </div>
+    </div>
+</section>
+

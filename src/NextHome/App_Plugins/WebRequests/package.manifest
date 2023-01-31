@@ -1,0 +1,11 @@
+{
+	propertyEditors: [],
+	parameterEditors:[],
+	javascript: [
+		'~/App_Plugins/WebRequests/Resources/api.resource.js',
+		'~/App_Plugins/WebRequests/backoffice/webrequests/lstInquiryRequest.controller.js',
+		'~/App_Plugins/WebRequests/backoffice/webrequests/inquiryRequestDetails.controller.js',
+		'~/App_Plugins/WebRequests/backoffice/webrequests/lstApplicant.controller.js',
+	],
+	css: []
+}

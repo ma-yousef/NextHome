@@ -1,0 +1,32 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.Building>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "InnerPage.cshtml";
+
+    var isRTL = Model.CurrentCulture.TwoLetterISOLanguageName == "ar";
+    var project = Model.Content.Ancestor();
+    var projectTypeArr = project.GetPropertyValue<nuPickers.Picker>("Project_Type").PickedKeys.ToArray();
+    string[] localizedProjTypeArr = new string[projectTypeArr.Length];
+    for (int i = 0; i < projectTypeArr.Length; i++)
+    {
+        localizedProjTypeArr[i] = Umbraco.GetDictionaryValue(projectTypeArr[i]).ToLower();
+    }
+
+    IEnumerable<IPublishedContent> projectUnits = null;
+
+    int idx = localizedProjTypeArr.IndexOf(Request.Url.LocalPath.Split('/')[2].ToLower());
+    if (idx != -1)
+    {
+        projectUnits = Model.Content.Children("unit").Where(i => i.GetPropertyValue<string>("unit_Category").Contains(projectTypeArr[idx]));
+    }
+}
+
+<section id="property" class="padding_b40">
+    <div class="container">
+        <div class="row">
+            @{
+                Html.RenderPartial("UnitsFilter", Model, new ViewDataDictionary { new KeyValuePair<string, object>("UnitsList", projectUnits) });
+            }
+        </div>
+    </div>
+</section>

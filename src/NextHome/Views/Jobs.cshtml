@@ -1,0 +1,105 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.Jobs>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "InnerPage.cshtml";
+
+    var jobList = Model.Content.Children();
+}
+
+<section id="faq2" class="padding bg_light" style="margin-top:-60px;">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="details-heading">
+
+                    <div class="row">
+                        <div class="col-md-12 bottom40">
+                            <h2 class="text-uppercase">@Umbraco.GetDictionaryValue("JoinTeam") <span class="color_green">@Umbraco.GetDictionaryValue("NextHome")</span></h2>
+                            <div class="line_1"></div>
+                            <div class="line_2"></div>
+                            <div class="line_3"></div>
+                            <p>@Model.Content.GetPropertyValue("jobs_Brief")</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="panel-group m_t40" id="accordion" role="tablist" aria-multiselectable="true">
+
+                            @foreach (var job in jobList)
+                            {
+                                <div class="col-md-12">
+                                    <div class="panel panel-default">
+
+                                        <div class="panel-heading" role="tab" id="heading_@job.Id">
+                                            <h4 class="panel-title">
+                                                <a role="button" data-toggle="collapse" href="#collapse_@job.Id" aria-expanded="false" aria-controls="collapse_@job.Id" style="color:#fff;" class="collapsed">
+                                                    @job.Name
+                                                </a>
+                                            </h4>
+                                        </div>
+
+                                        <div id="collapse_@job.Id" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                            <div class="panel-body">
+                                                <div class="listing-special-detail">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <p>@job.GetPropertyValue("job_Description") </p>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div rel="request">
+                                                                <form id="uploader_@job.Id">
+                                                                    <div class="single-query">
+                                                                        <input class="keyword-input" name="fullName" placeholder="@Umbraco.GetDictionaryValue("FullName")" type="text" value="" required>
+                                                                        <input type="hidden" name="vacancyName" value="@job.Name">
+                                                                    </div>
+                                                                    <div class="single-query">
+                                                                        <input class="keyword-input" name="mobileNo" placeholder="@Umbraco.GetDictionaryValue("MobileNo")" type="text" value="">
+                                                                    </div>
+                                                                    <div class="single-query">
+                                                                        <input class="keyword-input" name="email" placeholder="@Umbraco.GetDictionaryValue("Email")" type="text" value="">
+                                                                    </div>
+                                                                    <div class="single-query">
+                                                                        <input class="keyword-input" name="address" placeholder="@Umbraco.GetDictionaryValue("Address")" type="text" value="">
+                                                                    </div>
+                                                                    <div class="single-query">
+                                                                        <input type="file" name="files" required />
+                                                                    </div>
+                                                                    <br />
+                                                                    <a class="btn_fill" href="#." onclick='uploadCV(uploader_@job.Id)'>@Umbraco.GetDictionaryValue("Send")</a>
+                                                                </form>
+                                                                <br />
+                                                                <span class="color_green" style="font-weight:bold;">
+                                                                    @Umbraco.GetDictionaryValue("SendCV")
+                                                                    <a href='@("mailto:"+job.GetPropertyValue("job_Email"))' style="text-decoration:underline; color:#1d1d8eb8;">
+                                                                        @job.GetPropertyValue("job_Email")
+                                                                    </a>
+                                                                </span>
+                                                            </div>
+                                                            <div rel="response" style="display:none;">
+                                                                <div class="row color_green">
+                                                                    <div class="col-md-2">
+                                                                        <i class="icon-checkmark margin-r-20"></i>
+                                                                    </div>
+                                                                    <div class="col-md-10">
+                                                                        @Umbraco.GetDictionaryValue("CVUploaded")
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

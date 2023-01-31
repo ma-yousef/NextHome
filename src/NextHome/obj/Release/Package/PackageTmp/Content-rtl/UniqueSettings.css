@@ -1,0 +1,14 @@
+/*-----------------------------------------------------------------------------
+-	Revolution Slider 5.0 UniqueSolution Style Settings -
+Screen Stylesheet
+version:   	1.0.0
+date:      	07/04/18
+author:		ramimohsen
+email:     	info@us-eg.com
+website:   	http://www.us-eg.com
+-----------------------------------------------------------------------------*/
+
+.slide-content.left-slide .content,
+.slide-content.right-slide .content{
+	line-height: 25px !important;
+}

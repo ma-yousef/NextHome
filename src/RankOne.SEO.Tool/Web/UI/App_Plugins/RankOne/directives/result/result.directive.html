@@ -1,0 +1,12 @@
+﻿<div class="result clearfix">
+
+    <h3><localize key="{{result.Alias}}_title"></localize></h3>
+
+    <icon result="result"></icon>
+
+    <div class="resultlines">
+        <ul>
+            <resultline resultline="resultLine" result="result" ng-repeat="resultLine in result.ResultRules"></resultline>
+        </ul>
+    </div>
+</div>

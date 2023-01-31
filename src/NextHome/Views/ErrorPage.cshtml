@@ -1,0 +1,26 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ErrorPage>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "InnerPage.cshtml";
+	
+    bool isRTL = Model.CurrentCulture.TwoLetterISOLanguageName == "ar";
+}
+
+
+<!--===== ERROR 404 =====-->
+<section class="padding-bottom-64">
+    <div class="container">
+        <div class="row text-center">
+            <div class="error-image col-sm-12">
+                <i class="fa fa-exclamation-triangle" style="font-size:150px; color:#669941"></i>
+            </div>
+            <div class="error-text col-sm-12">
+                <br />
+                <h3>@Umbraco.GetDictionaryValue("UnexpectedError")</h3>
+                <br />
+                <a href="@Url.Content((isRTL ? Umbraco.NiceUrl(1069) : Umbraco.NiceUrl(1068)))" class="btn_fill">@Umbraco.GetDictionaryValue("BackToHome")</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--===== #/ERROR 404 =====-->

@@ -1,0 +1,99 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.NewsItem>
+@using NextHome.Helpers;
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+
+@{
+    Layout = "InnerPage.cshtml";
+}
+
+
+<!--===== NEWS Contents =====-->
+<section id="news-section-1" class="news-section-details property-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="col-md-8">
+                    <h3 class="text-uppercase bottom30"><span class="color_green">@Model.Content.Name</span></h3>
+                    <div class="line_1"></div>
+                    <div class="line_2"></div>
+                    <div class="line_3"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row rounded-border margin-bottom-20">
+
+            <!-- News Details -->
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="news-1-box margin_bottom20  clearfix">
+                        <div class="col-md-12 col-sm-12 col-xs-12 img-767-412">
+                            <img src='@Model.Content.Newsitem_MainImage.Url' alt="@Model.Content.Name" class="img-responsive" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 margin-bottom-20">
+                <p>@Html.Raw(Model.Content.Newsitem_Description)</p>
+            </div>
+            <div class="col-md-12">
+
+                @if (Model.Content.HasValue("Newsitem_Gallery"))
+                {
+                    <div class="row">
+                        <div class="col-xs-12 top40">
+                            <h3 class="text-uppercase bottom30"><span class="color_green">@Umbraco.GetDictionaryValue("Gallery")</span></h3>
+                            <div class="line_1"></div>
+                            <div class="line_2"></div>
+                            <div class="line_3"></div>
+                        </div>
+                        <div>
+                            @foreach (var img in Model.Content.Newsitem_Gallery)
+                            {
+                                <div class="col-md-4 margin-bottom-25">
+                                    <div class="image">
+                                        <img src="@img.Url" alt="" style="max-height:127px;">
+                                        <div class="overlay">
+                                            <a href="@img.Url" class="fancybox centered" data-fancybox="gallery">
+                                                <i class="icon-focus"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+
+                @if (Model.Content.HasGridValue("Newsitem_Videos"))
+                {
+                    <div class="row">
+                        <div class="col-xs-12 top40">
+                            <h3 class="text-uppercase bottom30"><span class="color_green">@Umbraco.GetDictionaryValue("Videos")</span></h3>
+                            <div class="line_1"></div>
+                            <div class="line_2"></div>
+                            <div class="line_3"></div>
+                        </div>
+                    </div>
+                    @Html.GetGridHtml(Model.Content, "Newsitem_Videos")
+                }
+                <div class="row">
+                    <div class="news-2-tag">
+                        <div class="col-md-7 col-sm-7 col-xs-12 text-right">
+                            <div class="social-icons">
+                                <ul class="socials">
+                                    <li>
+                                        <div class="fb-like" data-href="@Request.Url" data-layout="button" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="fb-comments" data-href="@Request.Url" data-numposts="10"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,122 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+    @{ 
+        bool isRTL = Model.CurrentCulture.TwoLetterISOLanguageName == "ar";
+        var dictionary = new Umbraco.Web.Dictionary.DefaultCultureDictionary(Model.CurrentCulture);
+        var lstUnitTypes = dictionary.GetChildren("UnitType").Select(i => new { i.Key, i.Value });
+        var lstLocations = dictionary.GetChildren("Locations").Select(i => new { i.Key, i.Value });
+
+
+    }
+    <div class="top-search">
+        <div class="container">
+            <!-- PROPERTY SEARCH -->
+            <section id="property-search-sev" class="property-query-area property-page-bg parallaxie">
+                <div class="container">
+                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                    @*<div class="row">
+                        <div class="col-md-12 bottom40">
+                            <h2 class="text-uppercase">
+                                <span class="color_red">@Umbraco.GetDictionaryValue("Search")</span>
+                                <span class="input-group-addon close-search" style="float:left;"><i class="fa fa-times"></i></span>
+                            </h2>
+                            <div class="line_1"></div>
+                            <div class="line_2"></div>
+                            <div class="line_3"></div>
+                        </div>
+                    </div>*@
+                    <form class="findus">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-3">
+                                <div class="single-query form-group">
+                                    <label>@Umbraco.GetDictionaryValue("Locations")</label>
+                                    <select class="selectpicker" data-live-search="true" name="search_Location">
+                                        <option value="">@Umbraco.GetDictionaryValue("Any")</option>
+                                        @foreach (var loc in lstLocations)
+                                        {
+                                            <option value="@loc.Key">@loc.Value</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3">
+                                <div class="single-query form-group">
+                                    <label>@Umbraco.GetDictionaryValue("UnitType")</label>
+                                    <select class="selectpicker" data-live-search="true" name="search_UnitType">
+                                        <option class="active" value="">@Umbraco.GetDictionaryValue("Any")</option>
+                                        @foreach (var unitType in lstUnitTypes)
+                                        {
+                                            <option value="@unitType.Key">@unitType.Value</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3">
+                                <div class="single-query form-group">
+                                    <label>@Umbraco.GetDictionaryValue("BedRooms")</label>
+                                    <select class="selectpicker" data-live-search="true" name="search_BedRooms">
+                                        <option class="active" value="">@Umbraco.GetDictionaryValue("Any")</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3">
+                                <div class="single-query form-group">
+                                    <label>@Umbraco.GetDictionaryValue("BathRooms")</label>
+                                    <select class="selectpicker" data-live-search="true" name="search_BathRooms">
+                                        <option class="active" value="">@Umbraco.GetDictionaryValue("Any")</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 col-sm-3">
+                                <div class="single-query form-group">
+                                    <label>@Umbraco.GetDictionaryValue("AreaFrom")</label>
+                                    <input type="text" name="search_AreaFrom" class="keyword-input" placeholder='@Umbraco.GetDictionaryValue("Any")'>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3">
+                                <div class="single-query form-group">
+                                    <label>@Umbraco.GetDictionaryValue("AreaTo")</label>
+                                    <input type="text" name="search_AreaTo" class="keyword-input" placeholder='@Umbraco.GetDictionaryValue("Any")'>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3">
+                                <div class="single-query form-group">
+                                    <label>@Umbraco.GetDictionaryValue("PriceFrom")</label>
+                                    <input type="text" name="search_PriceFrom" class="keyword-input" placeholder='@Umbraco.GetDictionaryValue("Any")'>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3">
+                                <div class="single-query form-group">
+                                    <label>@Umbraco.GetDictionaryValue("PriceTo")</label>
+                                    <input type="text" name="search_PriceTo" class="keyword-input" placeholder='@Umbraco.GetDictionaryValue("Any")'>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-md-5 col-sm-6 text-right">
+                                        <div class="query-submit-button margin_t20">
+                                            <button type="button" class="rounded-button lg" onclick="openSearchUnits(@Umbraco.NiceUrl(isRTL? 2290 : 2531))">@Umbraco.GetDictionaryValue("Search")</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <!-- PROPERTY SEARCH -->
+        </div>
+    </div>

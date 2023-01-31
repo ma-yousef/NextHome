@@ -1,0 +1,40 @@
+﻿{
+    //you can define multiple editors
+    propertyEditors: [
+        {
+            /*this must be a unique alias*/
+            alias: "HomeProject",
+            /*the name*/
+            name: "Add Projects To Home Page",
+            /*the HTML file we will load for the editor*/
+            editor: {
+                view: "~/App_Plugins/HomeProject/grid/editor.html"
+            },
+			prevalues: {
+    fields: [
+        
+    ]
+}
+        }
+    ],
+
+    //array of files we want to inject into the application on app_start
+    javascript: [
+        '~/App_Plugins/HomeProject/grid/editor.controller.js',
+        '~/App_Plugins/HomeProject/dialog/search.dialog.js',
+    ],
+	css: [
+		
+	],
+
+	  "gridEditors": 
+    [
+        {
+            "name": "Project",
+            "alias": "homeproject",
+            "view": "/App_Plugins/HomeProject/grid/editor.html",
+            "render": "homeproject",
+            "icon": "icon-company"
+        }
+    ]
+}

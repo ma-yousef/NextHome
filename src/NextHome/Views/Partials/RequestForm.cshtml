@@ -1,0 +1,201 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<NextHome.Models.RequestModel>
+
+@{
+    List<SelectListItem> lstProjects = new List<SelectListItem>() { new SelectListItem { Text = Umbraco.GetDictionaryValue("Projects"), Value = "0" } };
+    if ((string)ViewData["FormType"] == "SendRequest" || String.IsNullOrEmpty(Model.ProjectName))
+    {
+        IEnumerable<IPublishedContent> projects = Umbraco.ContentAtRoot().First().Descendants().Where("DocumentTypeAlias == \"project\"");
+        lstProjects.AddRange(projects.Select(p => new SelectListItem() { Text = p.Name, Value = p.Name }).Distinct().ToList());
+    }
+}
+
+@if ((string)ViewData["FormType"] == "SendRequest")
+{
+    <div class="property-query-area padding-all20 bg_light">
+        <div id="request_sent" style="display: none;">
+            <div class="row color_green">
+                <div class="col-md-2">
+                    <i class="icon-checkmark margin-r-20"></i>
+                </div>
+                <div class="col-md-10">
+                    @Umbraco.GetDictionaryValue("SentSuccessfully")
+                </div>
+            </div>
+            <br />
+            <div class="query-submit-button">
+                <input class="btn_fill btn_send" type="button" value='@Umbraco.GetDictionaryValue("SendAnotherMsg")' onclick="showRequestFrom()" />
+            </div>
+        </div>
+        <div id="request_message">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="text-uppercase bottom40"><span class="color-green">@Umbraco.GetDictionaryValue("SendRequest")</span></h3>
+                </div>
+            </div>
+            <div class="row">
+
+                @using (Ajax.BeginForm("SendRequest", "Contact", null, new AjaxOptions { HttpMethod = "POST", OnBegin = "SendRequest_OnBegin", OnSuccess = "SendRequest_OnSuccess", OnFailure = "SendRequest_Failure" }, new { id = "SendUs-Form", @class = "findus" }))
+                {
+                    <div class="col-md-12">
+                        <div class="single-query">
+                            @Html.TextBoxFor(m => m.FullName, new { name = "FullName", @class = "keyword-input", placeholder = Umbraco.GetDictionaryValue("FullName"), @type = "text" })
+                            @Html.ValidationMessageFor(m => m.FullName)
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="single-query" style="margin-bottom:-10px;">
+                            @Html.TextBoxFor(m => m.MobileNo, new { name = "MobileNo", @class = "keyword-input", placeholder = Umbraco.GetDictionaryValue("PhoneNumber"), @type = "tel" })
+                            @Html.ValidationMessageFor(m => m.MobileNo)
+                            @Html.TextBoxFor(m => m.PhoneNo, new { name = "PhoneNo", @class = "phone-input-text", @type = "tel", @style="border: none;", @tabindex="-1" })
+                        </div>
+                    </div>
+                    if (String.IsNullOrEmpty(Model.ProjectName))
+                    {
+                        <div class="col-md-12">
+                            <div class="single-query">
+                                @Html.DropDownListFor(m => m.ProjectName, lstProjects, new { @class = "selectpicker margin-bottom-10" })
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        @Html.HiddenFor(m => m.ProjectName)
+                    }
+                    <div class="col-md-12">
+                        <div class="single-query">
+                            @Html.TextAreaFor(m => m.Message, new { name = "Message", @class = "keyword-input", placeholder = Umbraco.GetDictionaryValue("Message"), @rows = "7" })
+                            @Html.ValidationMessageFor(m => m.Message)
+                            <input type="text" style="border: none;" tabindex="-1">
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <div style="">
+                            <input class="btn_fill btn_send" type="submit" value='@Umbraco.GetDictionaryValue("Send")' />
+                        </div>
+                        <div class="query-submit-button">
+                            <input class="btn_fill btn_send" type="submit" value='@Umbraco.GetDictionaryValue("Send")' />
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+}
+else if ((string)ViewData["FormType"] == "ConatctUs")
+{
+    using (Ajax.BeginForm("SendRequest", "Contact", null, new AjaxOptions { HttpMethod = "POST", OnBegin = "SendRequest_OnBegin", OnSuccess = "SendRequest_OnSuccess", OnFailure = "SendRequest_Failure" }, new { id = "ContactUs-Form", @class = "contact-form" }))
+    {
+        <div id="request_sent" style="display: none;">
+            <div class="row color_green">
+                <div class="col-md-2">
+                    <i class="icon-checkmark margin-r-20"></i>
+                </div>
+                <div class="col-md-10">
+                    @Umbraco.GetDictionaryValue("SentSuccessfully")
+                </div>
+            </div>
+            <br />
+            <div class="query-submit-button">
+                <input class="btn_fill btn_send" type="button" value='@Umbraco.GetDictionaryValue("SendAnotherMsg")' onclick="showRequestFrom()" />
+            </div>
+        </div>
+        <div id="request_message">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="single-query">
+                        @Html.TextBoxFor(m => m.FullName, new { name = "FullName", @class = "keyword-input", placeholder = Umbraco.GetDictionaryValue("FullName") })
+                        @Html.ValidationMessageFor(m => m.FullName)
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="single-query" style="margin-bottom:-10px;">
+                        @Html.TextBoxFor(m => m.MobileNo, new { name = "MobileNo", @class = "keyword-input", placeholder = Umbraco.GetDictionaryValue("Mobile") })
+                        @Html.ValidationMessageFor(m => m.MobileNo)
+                        @Html.TextBoxFor(m => m.PhoneNo, new { name = "PhoneNo", @class = "phone-input-text", @type = "tel", @style = "border: none;", @tabindex = "-1" })
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="single-query">
+                        @Html.TextBoxFor(m => m.Email, new { name = "Email", @class = "keyword-input", placeholder = Umbraco.GetDictionaryValue("Email") })
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="single-query">
+                        @Html.TextAreaFor(m => m.Message, new { name = "Message", @class = "keyword-input", placeholder = Umbraco.GetDictionaryValue("Message") })
+                        @Html.ValidationMessageFor(m => m.Message)
+                        <input type="text" style="border: none;" tabindex="-1">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <input type="submit" class="btn_fill" id="btn_submit" name="btn_submit" value='@Umbraco.GetDictionaryValue("Send")' />
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="property-query-area padding-all20 bg_light">
+        <div id="popup_sent" style="display: none;">
+            <div class="row color_green">
+                <div class="col-md-2">
+                    <i class="icon-checkmark margin-r-20"></i>
+                </div>
+                <div class="col-md-10">
+                    @Umbraco.GetDictionaryValue("SentSuccessfully")
+                </div>
+            </div>
+            <br />
+            <div class="query-submit-button">
+                <input class="btn_fill btn_send" type="button" value='@Umbraco.GetDictionaryValue("SendAnotherMsg")' onclick="showPopupFrom()" />
+            </div>
+        </div>
+        <div id="popup_message">
+            <div class="row">
+
+                @using (Ajax.BeginForm("SendRequest", "Contact", null, new AjaxOptions { HttpMethod = "POST", OnBegin = "PopupRequest_OnBegin", OnSuccess = "PopupRequest_OnSuccess", OnFailure = "PopupRequest_Failure" }, new { id = "PopupRequest-Form", @class = "findus" }))
+                {
+                    <div class="col-md-12">
+                        <div class="single-query">
+                            @Html.TextBoxFor(m => m.FullName, new { name = "FullName", @class = "keyword-input", placeholder = Umbraco.GetDictionaryValue("FullName"), @type = "text" })
+                            @Html.ValidationMessageFor(m => m.FullName)
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="single-query" style="margin-bottom:-10px;">
+                            @Html.TextBoxFor(m => m.MobileNo, new { name = "MobileNo", @class = "keyword-input", placeholder = Umbraco.GetDictionaryValue("Mobile"), @type = "tel" })
+                            @Html.ValidationMessageFor(m => m.MobileNo)
+                            @Html.TextBoxFor(m => m.PhoneNo, new { name = "PhoneNo", @class = "phone-input-text", @type = "tel", @style = "border: none;", @tabindex = "-1" })
+                        </div>
+                    </div>
+                    if (String.IsNullOrEmpty(Model.ProjectName))
+                    {
+                        <div class="col-md-12">
+                            <div class="single-query">
+                                @Html.DropDownListFor(m => m.ProjectName, lstProjects, new { @class = "selectpicker margin-bottom-10" })
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        @Html.HiddenFor(m => m.ProjectName)
+                    }
+                    <div class="col-md-12">
+                        <div class="single-query">
+                            @Html.TextAreaFor(m => m.Message, new { name = "Message", @class = "keyword-input", placeholder = Umbraco.GetDictionaryValue("Message"), @rows = "7" })
+                            @Html.ValidationMessageFor(m => m.Message)
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <div class="query-submit-button">
+                            <input class="btn_fill btn_send" type="submit" value='@Umbraco.GetDictionaryValue("Send")' />
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+}

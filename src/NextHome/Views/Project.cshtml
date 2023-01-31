@@ -1,0 +1,238 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.Project>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using NextHome.Helpers;
+@using Newtonsoft.Json
+@{
+    Layout = "InnerPage.cshtml";
+    var siteRoot = Model.Content.Site();
+    var isRTL = Model.CurrentCulture.TwoLetterISOLanguageName == "ar";
+    var projectTypeArr = Model.Content.GetPropertyValue<nuPickers.Picker>("Project_Type").PickedKeys.ToArray();
+    string[] localizedProjTypeArr = new string[projectTypeArr.Length];
+    for (int i = 0; i < projectTypeArr.Length; i++)
+    {
+        localizedProjTypeArr[i] = Umbraco.GetDictionaryValue(projectTypeArr[i]).ToLower();
+    }
+
+    IEnumerable<IPublishedContent> projectBuildings = Model.Content.Children("building");
+    IEnumerable<IPublishedContent> projectUnits = null;
+
+    int idx = localizedProjTypeArr.IndexOf(Request.Url.LocalPath.Split('/')[2].ToLower());
+    if (idx != -1)
+    {
+        projectUnits = Model.Content.Children("unit").Where(i => i.GetPropertyValue<string>("unit_category").Contains(projectTypeArr[idx]));
+    }
+    var facilitiesArr = Model.Content.GetPropertyValue<nuPickers.Picker>("Project_Facilities").PickedKeys.ToArray();
+
+    var projTimeLine = Model.Content.Children("projectUpdates").SingleOrDefault();
+
+    IEnumerable<IPublishedContent> featuredUnits = null;
+    if (!Model.Content.HasValue("Project_Logo"))
+    {
+        featuredUnits = siteRoot.Descendants("unit").Where(i => i.GetPropertyValue<bool>("Unit_IsFeatured")).Take(4);
+    }
+}
+<section class="property-details padding-bottom-64">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Gallery -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="property-d-1" class="owl-carousel">
+                            <div class="item slider-item" style="background-image: url('@(Model.Content.Project_MainImage.Url)'); background-position: center center; background-size: cover;"></div>
+                            @foreach (var img in Model.Content.Project_Images)
+                            {
+                                <div class="item slider-item" style="background-image: url('@(img.Url)'); background-position: center center; background-size: cover;"></div>
+                            }
+                        </div>
+                        <div id="property-d-1-2" class="owl-carousel">
+                            <div class="item thumb-item" style="background-image: url('@(Model.Content.Project_MainImage.Url)'); background-position: center center; background-size: cover;"></div>
+                            @foreach (var img in Model.Content.Project_Images)
+                            {
+                                <div class="item thumb-item" style="background-image: url('@(img.Url)'); background-position: center center; background-size: cover;"></div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                @if (Model.Content.HasValue("Project_Logo"))
+                {
+                    <div class="container-3 slider-item" style="background-image: url('@(Model.Content.Project_Logo.Url)'); background-position: center center; background-repeat: no-repeat;">
+
+                    </div>
+                }
+                else if(!Request.Browser.IsMobileDevice)
+                {
+                    <h3 class="text-uppercase"><span class="color_green">@Umbraco.GetDictionaryValue("FeaturedUnits")</span></h3>
+                    foreach (var featUnit in featuredUnits)
+                    {
+                        <div class="media rounded-border">
+                            <div class="media-left media-middle">
+                                <a href="@Umbraco.NiceUrl(featUnit.Id)">
+                                    <img class="media-object featured-units-img" src="@Umbraco.Media(featUnit.GetPropertyValue<Image>("Unit_MainImage").Id).NiceUrl()" alt="@featUnit.Name">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading"><a href="@Umbraco.NiceUrl(featUnit.Id)">@featUnit.Name</a></h4>
+                                <p>@(featUnit.Parent.GetPropertyValue<KeyValuePair<string, string>>("Project_District").Value), @(featUnit.Parent.GetPropertyValue<KeyValuePair<string, string>>("Project_City").Value)</p>
+                                <a href="@Umbraco.NiceUrl(featUnit.Id)">@Umbraco.GetDictionaryValue("ReadMore")</a>
+                            </div>
+                        </div>
+                    }
+                }
+                <div class="margin_t20 text-center">
+                    @*<div class="col-md-4 col-sm-4 col-xs-12 margin-bottom-25">
+                            <span class="fb-like" data-href="@Request.Url" data-layout="standard" data-width="350px" data-action="like" data-size="large" data-share="true"></span>
+                        </div>*@
+                    <hr />
+                    @if (projTimeLine != null)
+                    {
+                        <a class="rounded-button lg" href="@Umbraco.NiceUrl(projTimeLine.Id)">
+                            <i class="fa fa-history"></i> @Umbraco.GetDictionaryValue("ProjectTimeline")
+                        </a>
+                        <hr />
+                    }
+                    @if (Model.Content.HasValue("Project_Brochure"))
+                    {
+                        <a class="rounded-button lg" target="_blank" href="@(Model.Content.GetPropertyValue<Umbraco.Web.PublishedContentModels.File>("Project_Brochure").Url)">
+                            <i class="fa fa-file-text-o"></i>
+                            @Umbraco.GetDictionaryValue("Brouchure")
+                        </a>
+                        <hr />
+                    }
+
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="property-tab">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#tab_summary" aria-controls="summary" role="tab" data-toggle="tab">@Umbraco.GetDictionaryValue("Summary")</a></li>
+                        <li role="presentation"><a href="#tab_description" aria-controls="description" role="tab" data-toggle="tab">@Umbraco.GetDictionaryValue("Description")</a></li>
+                        <li role="presentation"><a href="#tab_features" aria-controls="features" role="tab" data-toggle="tab">@Umbraco.GetDictionaryValue("Facilities")</a></li>
+                        @if (Model.Content.HasGridValue("Project_Videos"))
+                        {
+                            <li role="presentation"><a href="#tab_videos" aria-controls="video" role="tab" data-toggle="tab">@Umbraco.GetDictionaryValue("Videos")</a></li>
+                        }
+                        @*<li role="presentation"><a href="#tab_location" aria-controls="location" role="tab" data-toggle="tab">@Umbraco.GetDictionaryValue("ProjectMap")</a></li>*@
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane" id="tab_description">
+                            <p class="p-font-15">@Html.Raw(Model.Content.Project_Description)</p>
+                            <br />
+                            <div id="map_canvas" style="height: 350px;"></div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane active" id="tab_summary">
+                            <table class="table table-striped table-responsive">
+                                <tbody>
+                                    <tr>
+                                        <td><b>@Umbraco.GetDictionaryValue("ProjectType")</b></td>
+                                        <td class='text-right'>@String.Join(" , ", localizedProjTypeArr) </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>@Umbraco.GetDictionaryValue("Location")</b></td>
+                                        <td class='text-right'>@(Model.Content.GetPropertyValue<KeyValuePair<string, string>>("Project_District").Value) - @(Model.Content.GetPropertyValue<KeyValuePair<string, string>>("Project_City").Value) </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b> @Umbraco.GetDictionaryValue("ProjectAreas")</b></td>
+                                        <td class="text-right">@(String.Format(Umbraco.GetDictionaryValue("AreaRange"), Model.Content.Project_AreaFrom, Model.Content.Project_AreaTo))</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>@Umbraco.GetDictionaryValue("ProjectPrices")</b></td>
+                                        <td class="text-right">
+                                            @(Model.Content.HasValue("Project_PriceFrom") ?
+                                                             String.Format(Umbraco.GetDictionaryValue("PriceRange"), Model.Content.Project_PriceFrom.ToString("N0"), Model.Content.Project_PriceTo.ToString("N0"))
+                                                             : String.Empty)
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="tab_features">
+                            <div class="row">
+                                @{
+                                    int j = 0;
+                                    double colItemCount = Math.Ceiling(facilitiesArr.Length / 3f);
+                                    while (j < facilitiesArr.Length)
+                                    {
+                                        <div class="col-md-4 col-sm-6 col-xs-12">
+
+                                            <ul class="pro-list">
+                                                @for (int k = 0; k < colItemCount && (k + j) < facilitiesArr.Length; k++)
+                                                {
+                                                    <li>
+                                                        @Umbraco.GetDictionaryValue(facilitiesArr[k + j])
+                                                    </li>
+                                                }
+                                                @{j += (int)colItemCount;}
+                                            </ul>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                        @if (Model.Content.HasGridValue("Project_Videos"))
+                        {
+                            <div role="tabpanel" class="tab-pane" id="tab_videos">
+                                @Html.GetGridHtml(Model.Content, "project_Videos")
+                            </div>
+                        }
+                        @*<div role="tabpanel" class="tab-pane" id="tab_location">
+
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="property" class="bg_light padding_t40 padding_b40">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="uppercase">
+                    <span class="color-green">
+                        @(projectBuildings == null || projectBuildings.Count() == 0 ? Umbraco.GetDictionaryValue("Units") : Umbraco.GetDictionaryValue("Buildings"))
+                    </span>
+                </h2>
+                <div class="line_1"></div>
+                <div class="line_2"></div>
+                <div class="line_3"></div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                @{
+                    if (projectBuildings == null || projectBuildings.Count() == 0)
+                    {
+                        Html.RenderPartial("UnitsFilter", Model, new ViewDataDictionary { new KeyValuePair<string, object>("UnitsList", projectUnits) });
+                    }
+                    else
+                    {
+                        Html.RenderPartial("BuildingsFilter", Model, new ViewDataDictionary { new KeyValuePair<string, object>("BuildingsList", projectBuildings), new KeyValuePair<string, object>("ProjType", localizedProjTypeArr[idx]) });
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+         var locations = [{
+            lat: @Model.Content.Project_Latitude,
+            lng: @Model.Content.Project_Longitude,
+            markerUrl: '@(Model.Content.HasValue("Project_MapMarker")? Model.Content.GetPropertyValue<Image>("Project_MapMarker").Url: String.Empty)',
+            title: '@Model.Content.Name',
+            subtitle: '@Model.Content.Project_FullAddress, @(Model.Content.GetPropertyValue<KeyValuePair<string, string>>("Project_District").Value), @(Model.Content.GetPropertyValue<KeyValuePair<string,string>>("Project_City").Value)',
+            imgUrl: '@(@Umbraco.Media(Model.Content.Project_MainImage.Id).NiceUrl())'
+        }];
+        
+        initializeMap('map_canvas', locations);
+    })
+</script>
+

@@ -1,0 +1,244 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<NextHome.Models.RequestModel>
+
+@{
+//ApplicationDbContext dpCtxt = new ApplicationDbContext();
+//List<SelectListItem> lstProjects = new List<SelectListItem>() { new SelectListItem { Text = @Resource.Projects, Value = "0" } };
+//if ((string)ViewData["FormType"] == "SendRequest" || String.IsNullOrEmpty(Model.ProjectName))
+//{
+//    if (CultureHelper.IsRighToLeft())
+//    {
+//        lstProjects.AddRange(dpCtxt.Projects.Select(p => new SelectListItem() { Text = p.ProjectNameAr, Value = p.ProjectNameAr }).Distinct().ToList());
+//    }
+//    else
+//    {
+//        lstProjects.AddRange(dpCtxt.Projects.Select(p => new SelectListItem() { Text = p.ProjectNameEn, Value = p.ProjectNameEn }).Distinct().ToList());
+//    }
+//}
+}
+
+@if ((string)ViewData["FormType"] == "SendRequest")
+{
+    <div class="property-query-area padding-all20 bg_light">
+        <div id="request_sent" style="display: none;">
+            <div class="row color_green">
+                <div class="col-md-2">
+                    <i class="icon-checkmark margin-r-20"></i>
+                </div>
+                <div class="col-md-10">
+                    SentSuccessfully
+                </div>
+            </div>
+            <br />
+            <div class="query-submit-button">
+                <input class="btn_fill btn_send" type="button" value="SendAnotherMsg" onclick="showRequestFrom()" />
+            </div>
+        </div>
+        <div id="request_message">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="text-uppercase bottom40"><span class="color-green">SendRequest</span></h3>
+                </div>
+            </div>
+            <div class="row">
+
+                @using (Ajax.BeginForm("SendRequest", "Contact", null, new AjaxOptions { HttpMethod = "POST", OnBegin = "SendRequest_OnBegin", OnSuccess = "SendRequest_OnSuccess", OnFailure = "SendRequest_Failure" }, new { id = "SendUs-Form", @class = "findus" }))
+                {
+                    <div class="col-md-12">
+                        <div class="single-query">
+                            @Html.TextBoxFor(m => m.FullName, new { name = "FullName", @class = "keyword-input", placeholder = "FullName", @type = "text" })
+                            @Html.ValidationMessageFor(m => m.FullName)
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="single-query">
+                            @Html.TextBoxFor(m => m.MobileNo, new { name = "MobileNo", @class = "keyword-input", placeholder = "PhoneNumber", @type = "tel" })
+                            @Html.ValidationMessageFor(m => m.MobileNo)
+                        </div>
+                    </div>
+                    if (String.IsNullOrEmpty(Model.ProjectName))
+                    {
+                        <div class="col-md-12">
+                            <div class="single-query">
+                                @*@Html.DropDownListFor(m => m.ProjectName, lstProjects, new { @class = "selectpicker margin-bottom-10" })*@
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        @Html.HiddenFor(m => m.ProjectName)
+                    }
+                    <div class="col-md-12">
+                        <div class="single-query">
+                            @Html.TextAreaFor(m => m.Message, new { name = "Message", @class = "keyword-input", placeholder = "Message", @rows = "7" })
+                            @Html.ValidationMessageFor(m => m.Message)
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <div class="query-submit-button">
+                            <input class="btn_fill btn_send" type="submit" value="Send" />
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="property-query-area padding-all20 bg_light">
+        <div id="popup_sent" style="display: none;">
+            <div class="row color_green">
+                <div class="col-md-2">
+                    <i class="icon-checkmark margin-r-20"></i>
+                </div>
+                <div class="col-md-10">
+                    SentSuccessfully
+                </div>
+            </div>
+            <br />
+            <div class="query-submit-button">
+                <input class="btn_fill btn_send" type="button" value="SendAnotherMsg" onclick="showPopupFrom()" />
+            </div>
+        </div>
+        <div id="popup_message">
+            <div class="row">
+
+                @using (Ajax.BeginForm("SendRequest", "Home", null, new AjaxOptions { HttpMethod = "POST", OnBegin = "PopupRequest_OnBegin", OnSuccess = "PopupRequest_OnSuccess", OnFailure = "PopupRequest_Failure" }, new { id = "Popup-Form", @class = "findus" }))
+                {
+                    <div class="col-md-12">
+                        <div class="single-query">
+                            @Html.TextBoxFor(m => m.FullName, new { name = "FullName", @class = "keyword-input", placeholder = "FullName", @type = "text" })
+                            @Html.ValidationMessageFor(m => m.FullName)
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="single-query">
+                            @Html.TextBoxFor(m => m.MobileNo, new { name = "MobileNo", @class = "keyword-input", placeholder = "PhoneNumber", @type = "tel" })
+                            @Html.ValidationMessageFor(m => m.MobileNo)
+                        </div>
+                    </div>
+                    if (String.IsNullOrEmpty(Model.ProjectName))
+                    {
+                        <div class="col-md-12">
+                            <div class="single-query">
+                                @*@Html.DropDownListFor(m => m.ProjectName, lstProjects, new { @class = "selectpicker margin-bottom-10" })*@
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        @Html.HiddenFor(m => m.ProjectName)
+                    }
+                    <div class="col-md-12">
+                        <div class="single-query">
+                            @Html.TextAreaFor(m => m.Message, new { name = "Message", @class = "keyword-input", placeholder = "Message", @rows = "7" })
+                            @Html.ValidationMessageFor(m => m.Message)
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <div class="query-submit-button">
+                            <input class="btn_fill btn_send" type="submit" value="Send" />
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    $(document).ready(function () {
+
+        $("#SendUs-Form,#Popup-Form").validate({
+            rules: {
+                FullName: {
+                    required: true
+                },
+                MobileNo: {
+                    required: true
+                },
+                Message: {
+                    required: true
+                }
+            },
+            messages: {
+
+                FullName: {
+                    required: ""
+                },
+                MobileNo: {
+                    required: ""
+                },
+                Message: {
+                    required: ""
+                }
+            }
+        });
+    })
+
+    function SendRequest_OnBegin() {
+        $('#request_message').waitMe({
+            effect: 'bounce',
+            color: '#669941'
+        });
+    }
+
+    function SendRequest_OnSuccess(data) {
+
+        if (data == 'Ok') {
+            $('#request_message').hide();
+            $('#request_sent').show();
+            $('#request_message').waitMe("hide");
+
+        }
+        else {
+        }
+    }
+
+    function SendRequest_Failure(e) {
+        console.log(e);
+    }
+
+    function showRequestFrom() {
+        $('#request_message').find('[name="FullName"]').val('');
+        $('#request_message').find('[name="MobileNo"]').val('');
+        $('#request_message').find('[name="Message"]').val('');
+
+        $('#request_sent').hide();
+        $('#request_message').show();
+    }
+
+    function PopupRequest_OnBegin() {
+        $('#popup_message').waitMe({
+            effect: 'bounce',
+            color: '#669941'
+        });
+    }
+
+    function PopupRequest_OnSuccess(data) {
+
+        if (data == 'Ok') {
+            $('#popup_message').hide();
+            $('#popup_sent').show();
+            $('#popup_message').waitMe("hide");
+
+        }
+        else {
+        }
+    }
+
+    function PopupRequest_Failure(e) {
+        console.log(e);
+    }
+
+    function showPopupFrom() {
+        $('#popup_message').find('[name="FullName"]').val('');
+        $('#popup_message').find('[name="MobileNo"]').val('');
+        $('#popup_message').find('[name="Message"]').val('');
+
+        $('#popup_sent').hide();
+        $('#popup_message').show();
+    }
+</script>

@@ -1,0 +1,65 @@
+﻿@model dynamic
+@using Umbraco.Web.Templates
+@using Newtonsoft.Json;
+
+@{
+
+    NextHome.Models.HomeProject homeProject = JsonConvert.DeserializeObject<NextHome.Models.HomeProject>(Model.value.ToString());
+    var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+    var project = umbracoHelper.Content(homeProject.projectId);
+    string[] projectTypeArr = project.GetPropertyValue<nuPickers.Picker>("Project_Type").PickedKeys;
+}
+
+<div class="wow">
+    <div class="team-member top40 text-center">
+        <div class="team-img home-project" style="background-image: url('@homeProject.imageUrl'); background-position: center center; background-size: cover;">
+            <div class="dock-bottom">
+                <h3 class="bottom10 white-text text-uppercase">@homeProject.projectName</h3>
+            </div>
+        </div>
+        <div class="team-hover">
+            <div class="desk">
+                @if (projectTypeArr.Contains("Commercial"))
+                {
+                    <a href="@URLDecorator(umbracoHelper.NiceUrl(homeProject.projectId), umbracoHelper.GetDictionaryValue("Commercial"))" class="white_border btn_fill" style="font-size: 120%;">@umbracoHelper.GetDictionaryValue("Commercial")</a>
+                }
+                @if (projectTypeArr.Contains("Residential"))
+                {
+                    <a href="@URLDecorator(umbracoHelper.NiceUrl(homeProject.projectId), umbracoHelper.GetDictionaryValue("Residential"))" class="white_border btn_fill" style="font-size: 120%;">@umbracoHelper.GetDictionaryValue("Residential")</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div class="wow fadeInUp home-project" data-wow-duration="2s" data-path-hover="M 0,0 0,38 90,58 180.5,38 180,0 z" style="background-image: url('@homeProject.imageUrl'); background-position: center center; background-size: cover;">
+        <figure>
+            <svg viewBox="0 0 180 500" preserveAspectRatio="none">
+                <path d="M 0 0 L 0 182 L 90 126.5 L 180 182 L 180 0 L 0 0 z " />
+            </svg>
+            <figcaption>
+                <h2>@homeProject.projectName</h2>
+                <div class="links">
+                    @if (projectTypeArr.Contains("Commercial"))
+                    {
+                        <a href="@URLDecorator(umbracoHelper.NiceUrl(homeProject.projectId), umbracoHelper.GetDictionaryValue("Commercial"))">@umbracoHelper.GetDictionaryValue("Commercial")</a>
+                    }
+                    @if (projectTypeArr.Contains("Residential"))
+                    {
+                        <a href="@URLDecorator(umbracoHelper.NiceUrl(homeProject.projectId), umbracoHelper.GetDictionaryValue("Residential"))">@umbracoHelper.GetDictionaryValue("Residential")</a>
+                    }
+                </div>
+            </figcaption>
+        </figure>
+    </div>*@
+
+@helper URLDecorator(string url, string projType)
+{
+    @* Ensure that we have a collection of pages *@
+
+    List<string> urlSegments = ((string[])url.Split('/')).ToList();
+
+    urlSegments.Insert(2, projType.ToLower());
+
+    @String.Join("/", urlSegments);
+}

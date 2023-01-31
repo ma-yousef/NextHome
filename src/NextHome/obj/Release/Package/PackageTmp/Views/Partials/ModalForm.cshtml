@@ -1,0 +1,63 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{ 
+    var requestModel = new NextHome.Models.RequestModel();
+}
+
+@if (true)//CultureHelper.IsRighToLeft())
+{
+<!-- Modal -->
+<div class="modal right fade" id="popumodal_request" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="float:left;"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel2" style="margin-left:20px; color:#fff;">SendRequest</h4>
+            </div>
+
+            <div class="modal-body">
+                <p>
+                    @{Html.RenderPartial("RequestForm", requestModel, new ViewDataDictionary { new KeyValuePair<string, object>("FormType", "PopupRequest") });}
+                </p>
+            </div>
+
+        </div><!-- modal-content -->
+    </div><!-- modal-dialog -->
+</div><!-- modal -->
+}
+else
+{
+<!-- Modal -->
+<div class="modal left fade" id="popumodal_request" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">SendRequest</h4>
+            </div>
+
+            <div class="modal-body">
+                <p>
+                    @{Html.RenderPartial("RequestForm", requestModel, new ViewDataDictionary { new KeyValuePair<string, object>("FormType", "PopupRequest") });}
+                </p>
+            </div>
+
+        </div><!-- modal-content -->
+    </div><!-- modal-dialog -->
+</div><!-- modal -->
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#popumodal_request").on('shown.bs.modal', function () {
+            $('.short-topup').toggle();
+        });
+
+        $("#popumodal_request").on('hidden.bs.modal', function () {
+            $('.short-topup').toggle();
+        });
+
+    })
+</script>

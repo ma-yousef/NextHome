@@ -1,0 +1,265 @@
+﻿@using System.Web.Optimization;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<IPublishedContent>
+@{
+    Layout = null;
+    var siteRoot = Model.Content.Site();
+    var contactusInfo = siteRoot.Children("ContactUs").FirstOrDefault();
+    var lang = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
+    bool isRTL = lang == "ar";
+    
+    IPublishedContent offer = null;
+    if (Model.Content.HasValue("global_Offer"))
+    {
+        offer = Model.Content.GetPropertyValue<IEnumerable<IPublishedContent>>("global_Offer").Where("Visible").FirstOrDefault();//.FirstOrDefult();
+    }
+}
+
+<!DOCTYPE html>
+<html lang="@lang" dir="@(isRTL ? "rtl" : "ltr")">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>@Umbraco.Field("page_Alias", altFieldAlias :"pageName") | @siteRoot.GetPropertyValue("home_SiteName")</title>
+    <!-- icons -->
+    <link rel="shortcut icon" href="~/images/short_icon.png">
+    <link rel="icon" href="~/images/short_icon32.png" sizes="32x32">
+    <link rel="icon" href="~/images/short_icon192.png" sizes="192x192">
+    <link rel="apple-touch-icon-precomposed" href="~/images/short_icon32.png">
+    <meta name="msapplication-TileImage" content="~/images/short_icon32.png">
+    <!-- OGP -->
+    <meta name="description" content="@Umbraco.Field("meta_Description", recursive: true)" />
+    <link rel="canonical" href="//www.nexthome-egy.com/@(isRTL ? "ar" : "en")/" />
+    <meta property="og:locale" content="@(isRTL ? "ar" : "en")/" />
+    <meta property="og:type" content="@Umbraco.Field("meta_ogType", recursive: true)" />
+    <meta property="og:title" content="@Umbraco.Field("meta_ogTitle", recursive: true)" />
+    <meta property="og:description" content="@Umbraco.Field("meta_ogDescription", recursive: true)" />
+    <meta property="og:url" content="@Umbraco.Field("meta_ogUrl", recursive: true)" />
+    <meta property="og:site_name" content="NextHome" />
+    <meta property="og:image" content="@Umbraco.Field("meta_ogType", recursive: true)">
+    <meta property="og:image:height" content="780">
+    <meta property="og:image:width" content="780">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:description" content="@Umbraco.Field("meta_ogDescription", recursive: true)" />
+    <meta name="twitter:title" content="@Umbraco.Field("meta_ogTitle", recursive: true)" />
+    <!-- Styles -->
+    @Styles.Render("~/" + (isRTL ? "rtl" : "ltr") + "-CssBundles")
+    @Styles.Render("~/Content/defaultCss")
+    <link href="~/css/custom.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/images/short_icon.png">
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '18ee127437bddf2313e1ab974333abb2f1ba1ee2';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+
+</head>
+
+<body class="@(isRTL ? " rtl" : "" )">
+    <!-- LOADER -->
+    @*<div class="loader">
+            <div class="cssload-thecube">
+                <div class="cssload-cube cssload-c1"></div>
+                <div class="cssload-cube cssload-c2"></div>
+                <div class="cssload-cube cssload-c4"></div>
+                <div class="cssload-cube cssload-c3"></div>
+            </div>
+        </div>*@
+    @if (siteRoot.HasValue("home_LoadingGIF"))
+    {
+        <div class="loader">
+            <div class="cssload-thecube">
+                <img src="@(siteRoot.GetPropertyValue<Image>("home_LoadingGIF").Url)" style="width:100px;" />
+            </div>
+        </div>
+    }
+    <!-- BACK TO TOP -->
+<div class="short-msg">
+    <a href="#." class="back-to"><i class="icon-arrow-up2"></i></a>
+    @if (Request.Browser.IsMobileDevice)
+    {
+        <a href='@("https://wa.me/" + @contactusInfo.GetPropertyValue("Contactus_WhatsApp") + (@contactusInfo.HasValue("contactus_whatsapptext")? "?text="+@contactusInfo.GetPropertyValue("contactus_whatsapptext"):""))' class="short-topup pulse-button"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+    }
+    else if(Model.Content.DocumentTypeAlias.ToLower() != "contactus")
+    {
+        <a href="#." class="short-topup pulse-button" data-toggle="modal" data-target="#popumodal_request"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+    }
+</div>
+
+    <!-- HEADER -->
+    @{ Html.RenderPartial("MainNavigation"); }
+
+    <!--===== Loading all JS bundles before RenderBody() =====-->
+    @Scripts.Render("~/" + (isRTL ? "rtl" : "ltr") + "-JsBundles")
+
+    @RenderBody()
+
+    <!-- Footer -->
+    <footer id="footer" class="footer divider layer-overlay overlay-dark-8">
+        <div class="container padding_t20">
+            <div class="row border-bottom">
+                <div class="col-sm-6 col-md-3">
+                    <div class="widget dark" style="margin-bottom:0px;">
+                        <img class="mt-5 mb-20 footer-logo" alt="" src="@(siteRoot.GetPropertyValue<Image>("Home_Logo").Url)">
+                        <ul class="list-inline mt-5">
+                            <li>
+                                <i class="fa fa-map-marker text-theme-color-2 mr-5"></i>
+                                @contactusInfo.GetPropertyValue("ContactUs_Address")
+                            </li>
+                            <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-color-2 mr-5"></i> <a class="text-gray" href='@("mailto:"+contactusInfo.GetPropertyValue("Contactus_Email"))'>@contactusInfo.GetPropertyValue("Contactus_Email")</a> </li>
+                            <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-color-2 mr-5"></i> <a href='tel:@(contactusInfo.GetPropertyValue("Contactus_Phone"))' class="text-gray" dir="@(isRTL ? "rtl" : "ltr")"> @contactusInfo.GetPropertyValue("Contactus_Phone")</a> </li>
+                        </ul>
+                    </div>
+                    <div class="widget dark">
+                        <h5 class="widget-title mb-10">@Umbraco.GetDictionaryValue("SubscribeEmail")</h5>
+                        <div class="mb20 text-right">
+                            <form class="padding-top-30">
+                                <input class="search" placeholder='@Umbraco.GetDictionaryValue("Email")' type="search">
+                                <a href="#." class="button"><i class="icon-mail-envelope-open"></i></a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="widget dark">
+                        <h5 class="widget-title mb-10">@Umbraco.GetDictionaryValue("ContactUs")</h5>
+                        <ul class="socials">
+                            <li><a href='@contactusInfo.GetPropertyValue("Contactus_Facebook")' target="_blank"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href='@contactusInfo.GetPropertyValue("Contactus_Instagram")' target="_blank"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href='@contactusInfo.GetPropertyValue("Contactus_Youtube")' target="_blank"><i class="fa fa-youtube"></i></a></li>
+                            <li><a href='@contactusInfo.GetPropertyValue("Contactus_Twitter")' target="_blank"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href='@("https://wa.me/" + @contactusInfo.GetPropertyValue("Contactus_WhatsApp") + (@contactusInfo.HasValue("contactus_whatsapptext")? "?text="+@contactusInfo.GetPropertyValue("contactus_whatsapptext"):""))' target="_blank"><i class="fa fa-whatsapp"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="widget dark">
+                        <h5 class="widget-title mb-10">@Umbraco.GetDictionaryValue("DownloadApp")</h5>
+                        <ul class="socials">
+                            <li><a href='@contactusInfo.GetPropertyValue("Contactus_Facebook")' target="_blank" class="app-icon"><i class="fa fa-android"></i></a></li>
+                            <li><a href='@contactusInfo.GetPropertyValue("Contactus_Instagram")' target="_blank" class="app-icon apple"><i class="fa fa-apple"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div id="map_footer" style="height:250px"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-4 margin-bottom-10">
+                    <p class="font-11 text-black-777 m-0 copy-right">Copyright &copy; @DateTime.Now.Year <a href="http://www.us-eg.com/" target="_blank"><span class="color-green">Unique Solutions</span></a>. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @if (Model.Content.HasValue("global_Audio"))
+    {
+        <audio autoplay="autoplay" style="display:none;">
+            <source src="@(Model.Content.GetPropertyValue<Umbraco.Web.PublishedContentModels.File>("global_Audio").Url)" type="audio/mpeg">
+        </audio>
+    }
+    
+    <!-- Modal -->
+    @if(Model.Content.DocumentTypeAlias.ToLower() != "contactus")
+    {
+        Html.RenderPartial("ModalForm");
+    }
+    
+    <!-- Modal Offer -->
+    <div id="modalOffer" class="modal-offer" style="display:none;">
+        <img src=""/>
+        <a href="#." class="close-offer" onclick="hide_element('modalOffer')"></a>
+    </div>
+
+    <!--===== REQUIRED JS =====-->
+    @* Moved on top of render body to make the custom-map.js dynamic *@
+    @*@Scripts.Render("~/" + (portal.nexthome.UiMvcWeb.Helpers.isRTL ? "rtl" : "ltr") + "-JsBundles")*@
+
+    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyAJP65pjvFttRrZ7VBx9o_rFgAkcVuPWyM"></script>
+    <script type="text/javascript" src="~/Scripts-@(isRTL ? "rtl" : "ltr" )/gmaps.js"></script>
+
+@*<script>
+    this.player = new window['YT'].Player('player', {
+    videoId: this.mediaid,
+    width:'100%',
+    playerVars: { 'autoplay': 1, 'controls': 0,'autohide':1,'wmode':'opaque','origin':'//nexthome-egy.com' },
+}
+window.YTConfig = {
+  host: 'https://www.youtube.com' 
+} 
+</script>*@
+    @*@RenderSection("maps", required: false)*@
+
+    @Scripts.Render("~/Scripts/defaultJs")
+
+    <script type="text/javascript">
+        $(window).on("load", function () {
+            "use strict";
+            $(".ellipsis").css("display", "block");
+            $('.ellipsis').dotdotdot();
+        });
+
+        $("[rel='def-carousel']").owlCarousel({
+                autoPlay: 3000,
+                items: 3,
+                pagination: false,
+                navigation: true,
+                navigationText: [
+                  "<i class='fa fa-angle-left'></i>",//prev
+                  "<i class='fa fa-angle-right'></i>"//next
+            ],
+            itemsDesktopSmall: [1024, 2],
+            itemsTablet: [768, 2],
+            itemsMobile: [479, 1],
+            direction: '@(isRTL ? "rtl" : "")'
+        });
+
+          $(document).ready(function () {
+        
+    var locations = [{
+            lat: @contactusInfo.GetPropertyValue("Contactus_Latitude"),
+            lng: @contactusInfo.GetPropertyValue("Contactus_Longitude"),
+            markerUrl: '@(contactusInfo.HasValue("Contactus_MapMarker")? Model.Content.GetPropertyValue<Image>("Contactus_MapMarker").Url: String.Empty)',
+            title: '@siteRoot.GetPropertyValue("home_SiteName")',
+            subtitle: '@contactusInfo.GetPropertyValue("Contactus_Address")',
+            imgUrl: '@(siteRoot.GetPropertyValue<Image>("Home_Logo").Url)'
+        }];
+
+        initializeMap('map_footer', locations);
+        
+        initOfferModal(
+            '@(offer != null? (!Request.Browser.IsMobileDevice? offer.GetPropertyValue<Image>("offer_Image").Url : offer.GetPropertyValue<Image>("offer_MobileImage").Url ): String.Empty)',
+            '@(offer != null? offer.GetPropertyValue<string>("offer_LinkUrl") : String.Empty)',
+            '@(offer != null? offer.GetPropertyValue<string>("offer_OfferName"): String.Empty)',
+            @(offer != null && offer.HasValue("offer_showAfter") ? offer.GetPropertyValue<int>("offer_showAfter"): -1),
+            @(offer != null && offer.HasValue("offer_hideAfter") ? offer.GetPropertyValue<int>("offer_hideAfter"): -1)
+        );
+    })
+    </script>
+
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+    <!--user scripts-->
+        @Umbraco.Field("global_ScriptPlaceHolder", recursive: true)
+    <!--user scripts-->
+</body>
+</html>
+
+

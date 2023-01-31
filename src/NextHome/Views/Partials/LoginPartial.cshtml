@@ -1,0 +1,89 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+
+@using System.Web.Mvc.Html
+@using ClientDependency.Core.Mvc
+@using Umbraco.Web
+@using Umbraco.Web.Models
+@using Umbraco.Web.Controllers
+@using CustomMembership.Controllers;
+
+@{
+    var loginModel = new LoginModel();
+
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+    Html.RequiresJs("/umbraco_client/ui/jquery.js");
+    Html.RequiresJs("/umbraco_client/Application/JQuery/jquery.validate.min.js");
+    Html.RequiresJs("/umbraco_client/Application/JQuery/jquery.validate.unobtrusive.min.js");
+
+    loginModel.Username = ((string)ViewData["UserName"]) ?? String.Empty;
+    var success = TempData["FormSuccess"] != null;
+
+}
+
+@* NOTE: This RenderJsHere code should be put on your main template page where the rest of your script tags are placed *@
+@Html.RenderJsHere()
+
+@if (!@HttpContext.Current.Request.IsAuthenticated)
+{
+
+    if (success)
+    {
+        @* This message will show if RedirectOnSucces is set to false (default) *@
+        <h2>@("Welcome " + @User.Identity.Name + ", You have logged in successfully.")</h2>
+    }
+    else
+    {
+        @*using (Html.BeginUmbracoForm<UmbLoginController>("HandleLogin"))*@
+        using (Html.BeginUmbracoForm<MembersController>
+        ("HandleLogin"))
+        {
+            if (Session["PinCode"] == null || (string)Session["PinCode"] == String.Empty)
+            {
+                <fieldset>
+
+                    @Html.ValidationSummary("loginModel", true)
+
+                    @Html.LabelFor(m => loginModel.Username)
+                    @Html.TextBoxFor(m => loginModel.Username)
+                    @Html.ValidationMessageFor(m => loginModel.Username)
+                    <br />
+
+                    @Html.LabelFor(m => loginModel.Password)
+                    @Html.PasswordFor(m => loginModel.Password)
+                    @Html.ValidationMessageFor(m => loginModel.Password)
+                    <br />
+
+                    <button>Login</button>
+                </fieldset>
+            }
+            else
+            {
+                <fieldset>
+                    <legend>Please put the authentication code sent to your email</legend>
+                    <br />
+
+                    @Html.HiddenFor(m => loginModel.Username)
+
+                    @Html.PasswordFor(m => loginModel.Password)
+                    @Html.ValidationMessageFor(m => loginModel.Password)
+                    <br />
+                    <br />
+                    <button>Send Code</button>
+                </fieldset>
+            }
+        }
+    }
+}
+else
+{
+    <h2>@("Hello " + @User.Identity.Name + ", You already logged in!")</h2>
+
+    using (Html.BeginUmbracoForm<MembersController>("HandleLogout"))
+    {
+        <fieldset>
+        <button>Logout</button>
+        </fieldset>
+    }
+}

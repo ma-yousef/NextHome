@@ -1,0 +1,4 @@
+﻿<div ng-controller="DictionaryDropDown">
+    <select ng-options="item.Value for item in dictionaryItems track by item.Key" ng-model="model.value" ng-change="dictionaryDD_changed()">
+    </select>
+</div>

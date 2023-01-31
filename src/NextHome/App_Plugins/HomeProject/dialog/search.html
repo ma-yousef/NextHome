@@ -1,0 +1,32 @@
+﻿<div ng-controller="HomeProject.Search">
+    <form name="dialogForm">
+        <umb-panel>
+            <div style="overflow:auto">
+                <umb-pane>
+                    <h3>Projects Search</h3>
+                    <p>Select project to insert into the page</p>
+                    <input type="text" name="searchTerm" class="searchTerm" ng-model="model.searchTerm" placeholder="Search Term" />
+                    <button type="button" class="btn btn-primary" ng-disabled="!dialogForm.$valid" ng-click="search()">
+                        <i class="icon-search"></i>
+                    </button>
+                </umb-pane>
+                <umb-pane class="projectsSearchResults">
+                    <div ng-if="errorStr" class="alert alert-danger"><strong>{{errorStr.title}}</strong> {{errorStr.message}}</div>
+                    <div ng-repeat="project in results" class="clearfix">
+                        <div ng-click="selectProject(project)" class="title">
+                            <p>{{project.name}}</p>
+                        </div>
+                    </div>
+                </umb-pane>
+            </div>
+            <div class="umb-panel-footer">
+                <div class="btn-toolbar umb-btn-toolbar pull-right">
+                    <a class="btn btn-link" ng-click="close()">
+                        <localize key="cancel" />
+                    </a>
+
+                </div>
+            </div>
+        </umb-panel>
+    </form>
+</div>

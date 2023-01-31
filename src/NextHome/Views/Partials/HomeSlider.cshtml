@@ -1,0 +1,82 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    var isRTL = Model.CurrentCulture.TwoLetterISOLanguageName == "ar";
+    var sliderItems = Model.Content.GetPropertyValue<IEnumerable<IPublishedContent>>("home_Slider");
+    var k = 0;
+    var defaultDelay = Model.Content.GetPropertyValue<int>("home_SliderDelay");
+}
+
+
+<section class="rev_slider_wrapper">
+    <div id="rev_full" class="rev_slider" data-version="5.0">
+        <ul>
+            @foreach (var item in sliderItems)
+            {
+                var timeDelay = item.GetPropertyValue<int>("sliderItem_delay");
+
+
+                <li data-transition="fade" data-delay="@(timeDelay == 0 ? defaultDelay : timeDelay)">
+                    @if (item.HasValue("slideritem_Image"))
+                    {
+                        <img src="@Url.Content(item.GetPropertyValue<Image>("slideritem_Image").Url)" alt="" data-bgposition="center center" data-bgfit="cover" class="rev-slidebg" />
+                    }
+                    @if (item.HasValue("slideritem_Title") || item.HasValue("slideritem_Description"))
+                    {
+                        <div class="tp-caption tp-resizeme"
+                             data-transform_idle="o:1;"
+                             data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeInOut;"
+                             data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                             data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                             data-start="800">
+                            @if (item.HasValue("slideritem_Title"))
+                            {
+                                <div>
+                                    @if (Request.Browser.IsMobileDevice)
+                                {
+                                    <h2 class="border_heading p-white" style="color:white; text-align:center"> @item.GetPropertyValue("slideritem_Title") </h2>
+                                }
+                                else
+                                {
+                                    <h3 class="border_heading p-white" style="color:white; text-align:center"> @item.GetPropertyValue("slideritem_Title") </h3>
+                                }
+                                </div>
+                                <br />
+                            }
+                            @if (item.HasValue("slideritem_Description"))
+                            {
+                                <div style="color:white;">
+                                    <div class="p-white rev-txt-layer">
+                                        @item.GetPropertyValue("slideritem_Description")
+                                    </div>
+                                </div>
+                                <br />
+                            }
+                            <div>
+                                @if (item.HasValue("slideritem_Link"))
+                                {
+                                    <a href="@(item.GetPropertyValue("slideritem_Link"))" class="btn_fill">@Umbraco.GetDictionaryValue("More")</a>
+                                }
+                                @if (item.GetPropertyValue<bool>("slideritem_RequestButton"))
+                                {
+                                    <a href="#" class="white_border" data-toggle="modal" data-target="#popumodal_request">@Umbraco.GetDictionaryValue("SendRequest")</a>
+                                }
+                            </div>
+                        </div>
+                    }
+                    @if (item.HasValue("sliderItem_youtubeID"))
+                    {
+                        <div class="rs-background-video-layer"
+                     data-ytid='@(item.GetPropertyValue("sliderItem_youtubeID"))' 
+                     data-volume="100" 
+                     data-forcerewind="on"
+                     data-nextslideatend="true" 
+                     data-videoloop="loopandnoslidestop"
+                     data-videoattributes="version=3&enablejsapi=1&html5=1&hd=1&wmode=opaque&showinfo=0&rel=0&
+                    origin=//nexthome-egy.com"></div>
+                    }
+                </li>
+
+            }
+        </ul>
+    </div>
+</section>

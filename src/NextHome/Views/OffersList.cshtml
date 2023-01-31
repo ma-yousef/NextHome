@@ -1,0 +1,28 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.OffersList>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "InnerPage.cshtml";
+    var siteRoot = Model.Content.Site();
+    var offers = siteRoot.Descendants().Where(i=> i.IsVisible() && i.HasValue("global_Offer")).SelectMany(i => i.GetPropertyValue<IEnumerable<IPublishedContent>>("global_Offer")).ToList();
+}
+
+<section class="news-section-details property-details">
+    <div class="container">
+        <div class="row">
+                @foreach (IPublishedContent offer in offers)
+                {
+                    string imgUrl = (Request.Browser.IsMobileDevice ? offer.GetPropertyValue<Image>("offer_MobileImage").Url : offer.GetPropertyValue<Image>("offer_Image").Url);
+                    <div class="col-md-4 margin-bottom-25">
+                        <div class="image">
+                            <img src="@imgUrl" alt="" style="max-height:300px;" offer="true" link-url='@offer.GetPropertyValue("offer_LinkUrl")' offer-name='@offer.GetPropertyValue("offer_Name")'>
+                            <div class="overlay">
+                                <a href="@imgUrl" class="fancybox-offer centered" data-fancybox="gallery">
+                                    <i class="icon-focus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+        </div>
+    </div>
+</section>

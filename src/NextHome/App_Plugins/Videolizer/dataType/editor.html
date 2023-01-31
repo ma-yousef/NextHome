@@ -1,0 +1,15 @@
+﻿<div ng-controller="DigitalMomentum.Videolizer" class="vEditor videolizer datatype">
+	<div class="previewColumn" ng-cloak>
+
+		<input ng-model="vidUrl" type="text" class="umb-editor umb-textstring textstring" placeholder="Video URL" ng-change="checkVideoUrl()" /> <button ng-click="checkVideoUrl()" type="button" class="btn btn-primary" title="Load Video"><i class="icon-movie-alt"></i></button> <button ng-click="openSearchWindow()" type="button" ng-show="hasSearchFunction" class="btn btn-primary" title="Search for Video"><i class="icon-search"></i></button>
+		
+
+		<iframe class="previewVid" ng-show="model.value.embedUrl != null" src="{{model.value.embedUrl}}" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+	</div>
+	<div class="infoColumn"  ng-show="model.value.embedUrl != null">
+		<h4 style="margin-top:0;">Video Info</h4>
+		<div>Video Type: {{model.value.type}}</div>
+		
+	</div>
+
+</div>

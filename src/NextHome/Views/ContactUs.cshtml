@@ -1,0 +1,95 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ContactUs>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using NextHome.Models;
+@{
+    Layout = "InnerPage.cshtml";
+    var siteRoot = CurrentPage.Site();
+    var isRTL = Model.CurrentCulture.TwoLetterISOLanguageName == "ar";
+    
+    var projects = siteRoot.Descendants("project").ToList();
+
+    System.Text.StringBuilder strLocations = new System.Text.StringBuilder();
+    foreach (var proj in projects)
+    {
+        strLocations.Append("locations.push({");
+        strLocations.Append("lat:" + proj.GetPropertyValue<string>("Project_Latitude"));
+        strLocations.Append(",lng:" + proj.GetPropertyValue<string>("Project_Longitude"));
+        strLocations.Append(",markerUrl:'" + (proj.HasValue("Project_MapMarker")? proj.GetPropertyValue<Image>("Project_MapMarker").Url: String.Empty) + "'");
+        strLocations.Append(",title:'" + proj.Name+"'");
+        strLocations.Append(",subtitle:'" + proj.GetPropertyValue<string>("Project_FullAddress")+"'");
+        strLocations.Append(",imgUrl:'" + proj.GetPropertyValue<Image>("Project_MainImage").Url + "'");
+        strLocations.Append("});");
+     }
+}
+
+<section id="contact-us">
+    <div class="container">
+        <div class="row padding">
+
+            <div class="col-md-8">
+                <div class="bottom40">
+                    <h2 class="text-uppercase"><span class="color_green">@Umbraco.GetDictionaryValue("SendUs")</span></h2>
+                    <div class="line_1"></div>
+                    <div class="line_2"></div>
+                    <div class="line_3"></div>
+                </div>
+                <div class="agent-p-form p-t-30">
+                    <div class="row">
+                        @Html.Partial("RequestForm", new NextHome.Models.RequestModel(), new ViewDataDictionary { new KeyValuePair<string, object>("FormType", "ConatctUs") })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="bottom40">
+                    <h2 class="text-uppercase"><span class="color_green">@Umbraco.GetDictionaryValue("GetInTouch")</span></h2>
+                    <div class="line_1"></div>
+                    <div class="line_2"></div>
+                    <div class="line_3"></div>
+                </div>
+
+                <div class="agent-p-contact p-t-30">
+                    <div class="agetn-contact-2">
+                        <p><i class="icon-telephone114"></i>@Model.Content.Contactus_Hotline</p>
+                        <a href="mailto:@Model.Content.Contactus_Email">
+                            <p><i class=" icon-icons142"></i>@Model.Content.Contactus_Email</p>
+                        </a>
+                        <a href='@("https://wa.me/" + Model.Content.Contactus_WhatsApp + (Model.Content.HasValue("contactus_whatsapptext")? "?text="+Model.Content.GetPropertyValue("contactus_whatsapptext"):""))'>
+                            <p><i class="icon-whatsapp" style="color:#1f1f1f8a;"></i>@Model.Content.Contactus_WhatsApp</p>
+                        </a>
+                        <p style='@(isRTL? "direction: ltr;":"")'><i class="icon-icons74"></i>@Model.Content.Contactus_Address</p>
+                    </div>
+                    <ul class='socials @(isRTL? "align-left" : "")'>
+                        <li><a href='@Model.Content.Contactus_Facebook' target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href='@Model.Content.Contactus_Youtube' target="_blank"><i class="fa fa-youtube"></i></a></li>
+                        <li><a href='@Model.Content.Contactus_Instagram' target="_blank"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href='@Model.Content.Contactus_Twitter' target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href='@("https://wa.me/" + Model.Content.Contactus_WhatsApp + (Model.Content.HasValue("contactus_whatsapptext")? "?text="+ Model.Content.GetPropertyValue("contactus_whatsapptext"):""))' target="_blank"><i class="fa fa-whatsapp"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="contact">
+        <div id="map_canvas"></div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        var locations = [{
+            lat: @Model.Content.Contactus_Latitude,
+            lng: @Model.Content.Contactus_Longitude,
+            markerUrl: '@(Model.Content.HasValue("Contactus_MapMarker")? Model.Content.GetPropertyValue<Image>("Contactus_MapMarker").Url: String.Empty)',
+            title: '@siteRoot.GetPropertyValue("home_SiteName")',
+            subtitle: '@Model.Content.Contactus_Address',
+            imgUrl: '@(siteRoot.GetPropertyValue<Image>("Home_Logo").Url)'
+        }];
+
+        @(Html.Raw(strLocations.ToString()))
+
+        initializeMap('map_canvas', locations);
+    })
+</script>

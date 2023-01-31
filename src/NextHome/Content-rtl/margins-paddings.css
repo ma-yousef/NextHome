@@ -1,0 +1,39 @@
+/* CSS Document 
+Author Name: ITian remo
+Author email: itian.remo@gmail.com
+Creation Date: 5th Jun, 2018
+Description: margin and paddings.
+
+------------ TABLE OF CONTENT ------------
+
+-Margin CSS
+-Padding CSS
+
+*/
+/* ================================= */
+/* ---------- Margin CSS --------- */
+/* ================================= */
+
+.margin-bottom-5 {
+    margin-bottom: 5px !important;
+}
+
+.margin-bottom-10 {
+    margin-bottom: 10px !important;
+}
+
+.margin-bottom-15 {
+    margin-bottom: 15px !important;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 20px !important;
+}
+
+.margin-bottom-25 {
+    margin-bottom: 25px !important;
+}
+
+/* ================================= */
+/* ---------- Padding CSS --------- */
+/* ================================= */

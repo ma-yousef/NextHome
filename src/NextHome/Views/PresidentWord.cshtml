@@ -1,0 +1,26 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.PresidentWord>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "InnerPage.cshtml";
+}
+
+<!-- Our Mission Start -->
+<section id="our-mission" class="padding-bottom-64">
+    <div class="container">
+        <div class="row mt-30">
+            <div class="about-sev-tag">
+                <div class="founder-text col-md-7 col-sm-7 col-xs-12">
+                    <p>
+                        @Html.Raw(Model.Content.President_Word)
+                    </p>
+                    <h3>- @Model.Content.President_Name, @Model.Content.President_Title.</h3>
+                </div>
+                <div class="col-md-5 col-sm-5 col-xs-12">
+                    <div class="our-mission-box-img">
+                        <img src="@Model.Content.President_Image.Url" alt="img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

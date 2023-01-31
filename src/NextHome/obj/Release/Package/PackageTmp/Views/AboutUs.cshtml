@@ -1,0 +1,84 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.AboutUs>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "InnerPage.cshtml";
+}
+
+<!--===== ABOUT US =====-->
+<section id="about_us" class="about-us padding-bottom-64">
+    <div class="container">
+        <div class="row">
+            <div class="history-section">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <h2 class="text-uppercase">@Umbraco.GetDictionaryValue("AboutUs")</h2>
+                    <div class="line_1"></div>
+                    <div class="line_2"></div>
+                    <div class="line_3"></div>
+                    <p class="top20 bottom40">
+                        @Html.Raw(Model.Content.Aboutus_AboutUs)
+                    </p>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div id="about_single" class="owl-carousel" dir="ltr">
+                        @foreach (var img in Model.Content.Aboutus_Images)
+                        {
+                            <div class="item">
+                                <div class="content-right-md">
+                                    <figure class="effect-layla">
+                                        <img src="@Umbraco.Media(img.Id).NiceUrl()" alt="@Model.Content.Name" />
+                                        <figcaption> </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--===== WHO WE ARE =====-->
+<section id="we_are">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12 margin_bottom">
+                <h2 class="text-uppercase"><span class="color-green">@Umbraco.GetDictionaryValue("WhoWeAre")</span></h2>
+                <div class="line_1"></div>
+                <div class="line_2"></div>
+                <div class="line_3"></div>
+                <p class="top40 bottom30">
+                    @Html.Raw(Model.Content.Aboutus_WhoWeAre)
+                </p>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <h2> <span class="color-green">@Umbraco.GetDictionaryValue("OurValues")</span></h2>
+                <div class="line_1"></div>
+                <div class="line_2"></div>
+                <div class="line_3"></div>
+                <p class="top40 bottom30">
+                    @Html.Raw(Model.Content.Aboutus_OurValues)
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12 margin_bottom">
+                <h2><span class="color-green">@Umbraco.GetDictionaryValue("OurMission")</span></h2>
+                <div class="line_1"></div>
+                <div class="line_2"></div>
+                <div class="line_3"></div>
+                <p class="top40 bottom30">
+                    @Html.Raw(Model.Content.Aboutus_OurMission)
+                </p>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <h2><span class="color-green">@Umbraco.GetDictionaryValue("OurVision")</span></h2>
+                <div class="line_1"></div>
+                <div class="line_2"></div>
+                <div class="line_3"></div>
+                <p class="top40 bottom30">
+                    @Html.Raw(Model.Content.Aboutus_OurVision)
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

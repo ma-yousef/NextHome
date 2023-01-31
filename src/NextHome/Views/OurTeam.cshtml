@@ -1,0 +1,46 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.OurTeam>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "InnerPage.cshtml";
+    var teamMembers = Model.Content.Children();
+}
+
+<section id="agent-2" class="padding">
+    <div class="container">
+        <div class="row">
+            @foreach (var member in teamMembers)
+            {
+                <div class="col-md-3 col-sm-4 col-xs-12 top12 bottom20">
+                    <div class="item">
+                        <div class="image">
+                            <img src='@(member.GetPropertyValue<Image>("Member_Image").Url)' class="img-responsive">
+                            <div class="img-info">
+                                <h3>@member.Name</h3>
+                                <span>@(member.GetPropertyValue<KeyValuePair<string, string>>("Member_Title").Value)</span>
+                                <p class="top20 bottom30">
+                                    @Html.Raw(member.GetPropertyValue("Member_About"))
+                                </p>
+                                <hr>
+                                <ul class="socials dark">
+                                    <li class="full-width">
+                                        <a href='mailto:@member.GetPropertyValue("Member_Email")'>
+                                            <i class="fa fa-envelope"></i> 
+                                            <span>@Umbraco.GetDictionaryValue("ContactUs")</span>
+                                        </a>
+                                    </li>
+                                    <br />
+                                    <li class="full-width">
+                                        <a target="_blank" href='https://wa.me/@member.GetPropertyValue("Member_PhoneNo")'>
+                                            <i class="fa fa-whatsapp"></i>
+                                            <span>@member.GetPropertyValue("Member_PhoneNo")</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

@@ -1,0 +1,37 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.News>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "InnerPage.cshtml";
+    var newsList = Model.Content.Children();
+}
+
+<section id="news-section-1" class="property-details padding-bottom-64">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    @foreach (var newsItem in newsList)
+                    {
+                    <div class="news-1-box clearfix">
+                        <div class="col-md-5 col-sm-5 col-xs-12 margin_bottom">
+                            <div class="image">
+                                <img src='@(newsItem.GetPropertyValue<Image>("Newsitem_MainImage").Url)' alt="image" class="img-responsive" />
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-sm-7 col-xs-12 margin_bottom">
+                            <h4>@newsItem.Name</h4>
+                            <div class="news-details">
+                                <span><i class="icon-icons228"></i>@(newsItem.CreateDate.ToString("MMM dd, yyyy", System.Globalization.CultureInfo.GetCultureInfo("en-us", "en")))</span>
+                            </div>
+                            <p class="p-font-15 ellipsis">@Html.Raw(newsItem.GetPropertyValue("Newsitem_Description"))</p>
+                            <div class="pro-3-link">
+                                <a href="@Umbraco.NiceUrl(newsItem.Id)" class="link_arrow top20">@Umbraco.GetDictionaryValue("ReadMore")</a>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

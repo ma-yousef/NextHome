@@ -1,0 +1,43 @@
+﻿@model dynamic
+@using Umbraco.Web.Templates
+@using Newtonsoft.Json;
+
+@{
+
+    NextHome.Models.HomeProject homeProject = JsonConvert.DeserializeObject<NextHome.Models.HomeProject>(Model.value.ToString());
+    var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+    var project = umbracoHelper.Content(homeProject.projectId);
+    string[] projectTypeArr = project.GetPropertyValue<nuPickers.Picker>("Project_Type").PickedKeys;
+}
+
+<div class="team-member top40 text-center">
+    <div class="team-img">
+        <img src="@homeProject.imageUrl" alt="">
+    </div>
+    <div class="team-hover">
+        <div class="desk">
+            <h3 class="bottom10 white-text text-uppercase">@homeProject.projectName</h3>
+            <p>
+                @if (projectTypeArr.Contains("Commercial"))
+                {
+                    <a href="@URLDecorator(umbracoHelper.NiceUrl(homeProject.projectId), umbracoHelper.GetDictionaryValue("Commercial"))" class="white_border btn_fill margin-t60" style="font-size: 18px;">@umbracoHelper.GetDictionaryValue("Commercial")</a>
+                }
+                @if (projectTypeArr.Contains("Residential"))
+                {
+                    <a href="@URLDecorator(umbracoHelper.NiceUrl(homeProject.projectId), umbracoHelper.GetDictionaryValue("Residential"))" class="white_border btn_fill margin-t60" style="font-size: 18px;">@umbracoHelper.GetDictionaryValue("Residential")</a>
+                }
+            </p>
+        </div>
+    </div>
+</div>
+
+@helper URLDecorator(string url, string projType)
+{
+    @* Ensure that we have a collection of pages *@
+
+    List<string> urlSegments = ((string[])url.Split('/')).ToList();
+
+    urlSegments.Insert(2, projType.ToLower());
+
+    @String.Join("/", urlSegments);
+}

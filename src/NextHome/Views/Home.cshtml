@@ -1,0 +1,98 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.Home>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "Master.cshtml";
+    var siteRoot = Model.Content.Site();
+    var newsList = siteRoot.Descendants("newsItem").Where("Visible").Take(6);
+}
+
+@{Html.RenderPartial("HomeSlider");}
+
+<section id="grid" class="grid clearfix padding_t40 padding_b40">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="uppercase"><span class="color-green">@Umbraco.GetDictionaryValue("Projects")</span></h2>
+                <div class="line_1"></div>
+                <div class="line_2"></div>
+                <div class="line_3"></div>
+            </div>
+        </div>
+        @Html.GetGridHtml(Model.Content, "home_Projects")
+    </div>
+</section>
+
+<!-- Counter Section -->
+<div id="counter-section" style="margin-top:20px;">
+    <div class="container">
+        <div class="row mb-20">
+            <div class="col-xs-12">
+                <h2 class="uppercase"><span class="color-green">@Umbraco.GetDictionaryValue("WhyChoose")</span></h2>
+                <div class="line_1"></div>
+                <div class="line_2"></div>
+                <div class="line_3"></div>
+            </div>
+        </div>
+
+        <div class="row number-counters text-center">
+            @foreach (var iconBox in Model.Content.Home_IconBox)
+            {
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <!-- first count item -->
+                    <div class="counters-item">
+                        <i class='@iconBox.GetPropertyValue("Iconbox_icon")' aria-hidden="true"></i>
+                        <!-- Set Your Number here. i,e. data-to="56" -->
+                        <strong>
+                            @iconBox.GetPropertyValue("Iconbox_text")
+                            <span data-to='@(iconBox.GetPropertyValue<int>("Iconbox_value"))'>0</span>
+                        </strong>
+                        <p>@iconBox.GetPropertyValue("Iconbox_title")</p>
+                        <div class="border-inner"></div>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+</div>
+
+<!-- Latest News -->
+<section id="news-section" class="news-section-details news_3 bottom30" style="margin-top:20px;">
+    <div class="container">
+        <div class="row">
+            <div class="row mb-20">
+                <div class="col-xs-12">
+                    <h2 class="uppercase"><span class="color-green">@Umbraco.GetDictionaryValue("LatestNews")</span></h2>
+                    <div class="line_1"></div>
+                    <div class="line_2"></div>
+                    <div class="line_3"></div>
+                </div>
+            </div>
+            <div id="news-slider" class="owl-carousel" rel="def-carousel">
+                @foreach (var item in newsList)
+                {<div class="col-md-12 col-sm-4 col-xs-12">
+
+
+                        <div class="latest_page_box">
+                            <span class="news_date">
+                                <i class="fa fa-calendar" aria-hidden="true"></i> @(item.CreateDate.ToString("dd MMM yyyy"))
+                            </span>
+                            <div class="news_image" style="background-image: url('@(item.GetPropertyValue<Image>("Newsitem_MainImage").Url)'); background-position: center center; background-size: cover;">
+                                <div class="price">
+                                    <span class="tag_red">@item.CreateDate.Day</span>
+                                    <span class="tag_white">@item.CreateDate.ToString("MMM")</span>
+                                </div>
+                            </div>
+                            <div class="news_padding">
+                                <h3>@item.Name</h3>
+                                <div class="ellipsis">@Html.Raw(item.GetPropertyValue("Newsitem_Description"))</div>
+                                <br />
+                                <a class="btn_fill" href='@item.NiceUrl()'>@Umbraco.GetDictionaryValue("ReadMore")</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

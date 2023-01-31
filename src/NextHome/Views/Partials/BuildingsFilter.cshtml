@@ -1,0 +1,41 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    bool inlineFormEnabled = false;
+    bool isRTL = Model.CurrentCulture.TwoLetterISOLanguageName == "ar";
+    string projectType = (string)ViewData["ProjType"];
+    IEnumerable<IPublishedContent> buildingsList = (IEnumerable<IPublishedContent>)ViewData["BuildingsList"];
+}
+
+<section id="units-section">
+    <div class="container">
+        <div id="portfolio" class="cbp">
+            @foreach (var building in buildingsList)
+            {
+                <div class="col-md-4 col-sm-6 cbp-item overlay-item">
+                    <div class="property_item latest_page_box">
+                        <div class="text-title">
+                            <h3><a href="@Umbraco.NiceUrl(building.Id)">@building.Name</a></h3>
+                        </div>
+                        <div class="image">
+                            <img src="@Umbraco.Media(building.GetPropertyValue<Image>("building_Image").Id).NiceUrl()" alt="@building.Name" class="img-responsive img-370-289 ">
+                            <div class="overlay">
+                                <div class="centered">@decorateUrl(Umbraco.NiceUrl(building.Id), projectType)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+
+@helper  decorateUrl(string documentUrl, string projType)
+{
+List<string> urlSegments = ((string[])documentUrl.Split('/')).ToList();
+
+urlSegments.Insert(2, projType.ToLower());
+
+<a class="link_arrow white_border" href="@String.Join("/", urlSegments)">@Umbraco.GetDictionaryValue("ViewDetails")</a>
+}

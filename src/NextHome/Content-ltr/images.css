@@ -1,0 +1,118 @@
+/* CSS Document 
+Author Name: 99_Design
+Author email: rami.mohsen@live.com
+Creation Date: 12th Jan, 2018
+
+/* ================================= */
+/* ---------- GENERRAL CSS --------- */
+/* ================================= */
+.img-272-158 {
+    /*width: 272px !important;*/
+    height: 158px !important;
+    /*max-width: 272px !important;*/
+    max-height: 158px !important;
+}
+
+.img-82-79 {
+    /*width: 82px !important;*/
+    height: 79px !important;
+    /*max-width: 82px !important;*/
+    max-height: 79px !important;
+}
+
+.img-767-412 {
+    /*width: 767px !important;*/
+    height: 412px !important;
+    /*max-width: 767px !important;*/
+    max-height: 412px !important;
+}
+
+.img-345-200 {
+    /*width: 345px !important;*/
+    height: 200px !important;
+    /*max-width: 345px !important;*/
+    max-height: 200px !important;
+}
+.img-364-254 {
+    /*width: 345px !important;*/
+    height: 254px !important;
+    /*max-width: 345px !important;*/
+    max-height: 254px !important;
+}
+.img-63-63 {
+    /*width: 345px !important;*/
+    height: 63px !important;
+    /*max-width: 345px !important;*/
+    max-height: 63px !important;
+}
+/*.img-240-120 {
+    width: 240px !important;
+    height: 200px !important;
+    max-width: 240px !important;
+    max-height: 200px !important;
+}*/
+.img-370-289 {
+    /*width: 345px !important;*/
+    height: 289px !important;
+    /*max-width: 345px !important;*/
+    max-height: 289px !important;
+}
+.img-310-203 {
+    /*width: 310px !important;*/
+    height: 203px !important;
+    /*max-width: 310px !important;*/
+    max-height: 203px !important;
+}
+.img-640-640 {
+    /*width: 310px !important;*/
+    height: 640px !important;
+    /*max-width: 310px !important;*/
+    max-height: 640px !important;
+}
+.img-148-148 {
+    /*width: 310px !important;*/
+    height: 148px !important;
+    /*max-width: 310px !important;*/
+    max-height: 148px !important;
+}
+.img-209-122 {
+    /*width: 310px !important;*/
+    height: 122px !important;
+    /*max-width: 310px !important;*/
+    max-height: 122px !important;
+}
+.img-339-212 {
+    /*width: 310px !important;*/
+    height: 122px !important;
+    /*max-width: 310px !important;*/
+    max-height: 122px !important;
+}
+.img-360-281 {
+    /*width: 310px !important;*/
+    height: 281px !important;
+    /*max-width: 310px !important;*/
+    max-height: 281px !important;
+}
+.img-360-240 {
+    /*width: 310px !important;*/
+    height: 240px !important;
+    /*max-width: 310px !important;*/
+    max-height: 240px !important;
+}
+.img-360-240 img,
+.img-360-281 img,
+.img-339-212 img,
+.img-209-122 img,
+.img-148-148 img,
+.img-640-640 img, 
+.img-345-200 img,
+.img-364-254 img,
+.img-272-158 img,
+.img-82-79 img,
+.img-370-289 img,
+.img-310-203 img,
+.img-767-412 img {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover;
+}

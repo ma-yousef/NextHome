@@ -1,0 +1,145 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    var siteRoot = CurrentPage.Site();
+    bool isRTL = Model.CurrentCulture.TwoLetterISOLanguageName == "ar";
+    var visiblePages = siteRoot.Children.Where("Visible");
+}
+<!-- HEADER -->
+<header id="main_header" class='header_nin @(isRTL ? " rtl" : "" )'>
+    <nav class="navbar navbar-default navbar-sticky bootsnav">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="social-icons text-right">
+                        <ul class="socials">
+                            <li><a href=""><i class="fa fa-facebook"></i></a></li>
+                            <li><a href=""><i class="fa fa-youtube"></i></a></li>
+                            <li><a href=""><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- Start Header Navigation -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <a class="navbar-brand sticky_logo" href="@Url.Content((isRTL ? Umbraco.NiceUrl(1069) : Umbraco.NiceUrl(1068)))">
+                            <img src="@Umbraco.Media(siteRoot.home_Logo.Id).NiceUrl()" alt="siteRoot.home_SiteName" />
+                        </a>
+                    </div>
+                    <!-- End Header Navigation -->
+
+                    <div class="collapse navbar-collapse" id="navbar-menu">
+                        <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                            <li class="@(Model.Content.DocumentTypeAlias.ToLower() == "home" ? "active" : null)">
+                                <a href="@siteRoot.Url">@siteRoot.Name.ToUpper()</a>
+                            </li>
+                            @foreach (var item in visiblePages)
+                            {
+                                if (item.Children.Any())
+                                {
+                                    if (item.DocumentTypeAlias.ToLower() == "projectslist" && item.projectslist_CalssifyByType)
+                                    {
+                                        if (item.projectslist_HideTopMenu)
+                                        {
+                                            <li class="dropdown @(item.IsAncestorOrSelf(Model.Content) ? "active" : null)">
+                                                <a href="#" class="dropdown-toggle">@Umbraco.GetDictionaryValue("Residential")</a>
+                                                @childProjects(item.Children, "Residential")
+                                            </li>
+                                            <li class="dropdown @(item.IsAncestorOrSelf(Model.Content) ? "active" : null)">
+                                                <a href="#" class="dropdown-toggle">@Umbraco.GetDictionaryValue("Commercial")</a>
+                                                @childProjects(item.Children, "Commercial")
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li class="dropdown @(item.IsAncestorOrSelf(Model.Content) ? "active" : null)">
+                                                <a href="#" class="dropdown-toggle">@item.Name.ToUpper()</a>
+                                                <ul class="dropdown-menu">
+                                                    <li class="dropdown @(item.IsAncestorOrSelf(Model.Content) ? "active" : null)">
+                                                        <a href="#" class="dropdown-toggle">@Umbraco.GetDictionaryValue("Residential")</a>
+                                                        @childProjects(item.Children, "Residential")
+                                                    </li>
+                                                    <li class="dropdown @(item.IsAncestorOrSelf(Model.Content) ? "active" : null)">
+                                                        <a href="#" class="dropdown-toggle">@Umbraco.GetDictionaryValue("Commercial")</a>
+                                                        @childProjects(item.Children, "Commercial")
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <li class="dropdown @(item.IsAncestorOrSelf(Model.Content) ? "active" : null)">
+                                            <a href='@(item.DocumentTypeAlias.ToLower() == "dummy" || item.DocumentTypeAlias.ToLower() == "projectslist" ? "#" : item.Url)'>@item.Name.ToUpper()</a>
+                                            @childPages(item.Children)
+                                        </li>
+                                    }
+
+                                }
+                                else
+                                {
+
+                                    <li class="@(item.IsAncestorOrSelf(Model.Content) ? "active" : null)">
+                                        <a href="@item.Url">@item.Name.ToUpper()</a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+@helper childPages(dynamic pages)
+{
+    @* Ensure that we have a collection of pages *@
+    if (pages.Any())
+    {
+        @* Add in level for a CSS hook *@
+
+        <ul class="dropdown-menu">
+            @foreach (var page in pages)
+            {
+                var childrenPages = page.Children.Where("Visible");
+                <li>
+                    <a href="@page.Url">@page.Name</a>
+                    @* if the current page has any children *@
+                    @if (childrenPages != null && childrenPages.Any())
+                    {
+                        @* Call our helper to display the children *@
+                        @childPages(childrenPages)
+                    }
+                </li>
+            }
+        </ul>
+    }
+}
+
+@helper childProjects(dynamic pages, string projType)
+{
+    @* Ensure that we have a collection of pages *@
+    if (pages.Any())
+    {
+        @* Add in level for a CSS hook *@
+        <ul class="dropdown-menu">
+            @foreach (var page in pages)
+            {
+                List<string> urlSegments = ((string[])page.Url.Split('/')).ToList();
+
+                urlSegments.Insert(2, Umbraco.GetDictionaryValue(projType).ToLower());
+
+                if (page.Project_Type.ToString().Contains(projType))
+                {
+                    var childrenPages = page.Children.Where("Visible");
+                    <li>
+                        <a href='@String.Join("/", urlSegments)'>@page.Name</a>
+                    </li>
+                }
+            }
+        </ul>
+    }
+}

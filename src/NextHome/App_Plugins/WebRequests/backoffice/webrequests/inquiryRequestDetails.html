@@ -1,0 +1,47 @@
+﻿<div ng-controller="inquiryRequestDetailsController" class="umb-overlay" style="width:440px; height:100%;">
+    <ng-form class="umb-overlay__form ng-pristine ng-valid">
+        <div class="umb-overlay-header">
+            <h3>{{model.title}}</h3>
+            {{dialogData.request.CreationDate | date :  "dd-MM-yyyy"}}
+        </div>
+        <div class="umb-overlay-container form-horizontal" style="margin:10px;">
+            <div class="umb-el-wrap">
+                <label>Full Name</label>
+                <div class="control">
+                    <input type="text" class="umb-editor" ng-model="dialogData.request.FullName" disabled />
+                </div>
+            </div><br />
+            <div class="umb-el-wrap">
+                <label>Mobile No</label>
+                <div class="control">
+                    <input type="text" class="umb-editor" ng-model="dialogData.request.MobileNo" disabled />
+                </div>
+            </div><br />
+            <div class="umb-el-wrap">
+                <label>Email</label>
+                <div class="control">
+                    <input type="text" class="umb-editor" ng-model="dialogData.request.Email" disabled />
+                </div>
+            </div><br />
+            <div class="umb-el-wrap">
+                <label>Project Name</label>
+                <div class="control">
+                    <input type="text" class="umb-editor" ng-model="dialogData.request.ProjectName" disabled />
+                </div>
+            </div><br />
+            <div class="umb-el-wrap">
+                <label>Message</label>
+                <div class="control">
+                    <textarea class="umb-editor" rows="7" ng-model="dialogData.request.Message" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="umb-overlay-drawer" ng-class="{'-auto-height': true}">
+            <button class="btn" ng-click="close()">Close</button>
+            <!--<div class="umb-overlay-drawer__align-right ng-scope" >
+                <umb-button model="model.closeOverlay"></umb-button>
+                <umb-button model="model.submit"></umb-button>
+            </div>-->
+        </div>
+    </ng-form>
+</div>

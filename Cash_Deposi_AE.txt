@@ -1,0 +1,867 @@
+-- Account Entries For Transaction : CashDeposit
+-- delete all account entries legs --
+-- delete all parameters 
+delete from XAPIConditions where BankTranXAPICodeID in (select Id  from BankTranXAPICode where TranID = 160)
+delete from TranXAPICodeParam where TranXAPICodeID in (select Id  from BankTranXAPICode where TranID = 160)
+delete from RulesTranSteps from RulesTranSteps WHERE TranID  = 160
+delete from RulesTranPositioning where TranID = 160
+delete from BankTranXAPICode where TranID = 160
+-- get the account entries legs --
+
+------------------
+Declare @maxid int
+
+
+--------------------
+Declare @XAPIID int 
+
+
+-----------------------------------------------------------------
+exec dbo.Next_Table_MaxID 'BankTranXAPICode','ID',@XAPIID output 
+
+
+-------------------
+set @maxid=@XAPIID 
+
+                                                                                                                                                                                                                                                                 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into BankTranXAPICode(ID,Bank ,TranID ,XAPICode ,Seq ,ReversalSeq ,AllowPositioning ,HasCondition ,ResendIfRejected ,LocalEquivalent ,Positioning_ExchangeRate ,IsFeesXAPICall ,FeesXAPICallSequence ,AccountFees,CheckCondBeforeEvaluation ,La
+stChange @maxid+0,1010,160,916,1,1,1,0,0,'(FLD_9*FLD_1000040)','FLD_1000040',0,NULL,'',1,'Aug 15 2022  9:27AM','AME\mahmoud.yousef',NULL,NULL,0
+insert into BankTranXAPICode(ID,Bank ,TranID ,XAPICode ,Seq ,ReversalSeq ,AllowPositioning ,HasCondition ,ResendIfRejected ,LocalEquivalent ,Positioning_ExchangeRate ,IsFeesXAPICall ,FeesXAPICallSequence ,AccountFees,CheckCondBeforeEvaluation ,La
+stChange @maxid+1,1010,160,915,5,5,0,1,0,'','',0,NULL,'',1,'Aug 15 2022  9:35AM','AME\mahmoud.yousef',NULL,NULL,0
+insert into BankTranXAPICode(ID,Bank ,TranID ,XAPICode ,Seq ,ReversalSeq ,AllowPositioning ,HasCondition ,ResendIfRejected ,LocalEquivalent ,Positioning_ExchangeRate ,IsFeesXAPICall ,FeesXAPICallSequence ,AccountFees,CheckCondBeforeEvaluation ,La
+stChange @maxid+2,1010,160,753,7,7,0,1,0,'','',0,NULL,'',1,'Aug 15 2022  9:38AM','AME\mahmoud.yousef',NULL,NULL,0
+insert into BankTranXAPICode(ID,Bank ,TranID ,XAPICode ,Seq ,ReversalSeq ,AllowPositioning ,HasCondition ,ResendIfRejected ,LocalEquivalent ,Positioning_ExchangeRate ,IsFeesXAPICall ,FeesXAPICallSequence ,AccountFees,CheckCondBeforeEvaluation ,La
+stChange @maxid+3,1010,160,904,10,10,1,1,0,'(FLD_9*FLD_1000040)','FLD_1000040',0,NULL,'',1,'Aug 15 2022 11:08AM','AME\mahmoud.yousef',NULL,NULL,0
+insert into BankTranXAPICode(ID,Bank ,TranID ,XAPICode ,Seq ,ReversalSeq ,AllowPositioning ,HasCondition ,ResendIfRejected ,LocalEquivalent ,Positioning_ExchangeRate ,IsFeesXAPICall ,FeesXAPICallSequence ,AccountFees,CheckCondBeforeEvaluation ,La
+stChange @maxid+4,1010,160,904,20,20,1,1,0,'(FLD_9*FLD_1000040)','FLD_1000040',0,NULL,'',1,'Apr 20 2005  1:23PM','AME\sqladmin',NULL,NULL,0
+insert into BankTranXAPICode(ID,Bank ,TranID ,XAPICode ,Seq ,ReversalSeq ,AllowPositioning ,HasCondition ,ResendIfRejected ,LocalEquivalent ,Positioning_ExchangeRate ,IsFeesXAPICall ,FeesXAPICallSequence ,AccountFees,CheckCondBeforeEvaluation ,La
+stChange @maxid+5,1010,160,915,40,40,0,1,0,'','',0,NULL,'',1,'Aug 21 2019 11:39AM','AME\sqladmin',NULL,NULL,0
+insert into BankTranXAPICode(ID,Bank ,TranID ,XAPICode ,Seq ,ReversalSeq ,AllowPositioning ,HasCondition ,ResendIfRejected ,LocalEquivalent ,Positioning_ExchangeRate ,IsFeesXAPICall ,FeesXAPICallSequence ,AccountFees,CheckCondBeforeEvaluation ,La
+stChange @maxid+6,1010,160,915,45,45,0,1,0,'','',0,NULL,'',1,'Aug 21 2019 11:39AM','AME\sqladmin',NULL,NULL,0
+insert into BankTranXAPICode(ID,Bank ,TranID ,XAPICode ,Seq ,ReversalSeq ,AllowPositioning ,HasCondition ,ResendIfRejected ,LocalEquivalent ,Positioning_ExchangeRate ,IsFeesXAPICall ,FeesXAPICallSequence ,AccountFees,CheckCondBeforeEvaluation ,La
+stChange @maxid+7,1010,160,903,50,50,0,1,0,'','',0,NULL,'',1,'May 23 2019  3:22PM','AME\sqladmin',NULL,NULL,0
+insert into BankTranXAPICode(ID,Bank ,TranID ,XAPICode ,Seq ,ReversalSeq ,AllowPositioning ,HasCondition ,ResendIfRejected ,LocalEquivalent ,Positioning_ExchangeRate ,IsFeesXAPICall ,FeesXAPICallSequence ,AccountFees,CheckCondBeforeEvaluation ,La
+stChange @maxid+8,1010,160,903,60,60,0,1,0,'','',0,NULL,'',1,'May 23 2019  3:24PM','AME\sqladmin',NULL,NULL,0
+insert into BankTranXAPICode(ID,Bank ,TranID ,XAPICode ,Seq ,ReversalSeq ,AllowPositioning ,HasCondition ,ResendIfRejected ,LocalEquivalent ,Positioning_ExchangeRate ,IsFeesXAPICall ,FeesXAPICallSequence ,AccountFees,CheckCondBeforeEvaluation ,La
+stChange @maxid+9,1010,160,916,70,70,0,1,0,'','',0,NULL,'',1,'Aug 20 2007  6:47PM','AME\sqladmin',NULL,NULL,0
+insert into BankTranXAPICode(ID,Bank ,TranID ,XAPICode ,Seq ,ReversalSeq ,AllowPositioning ,HasCondition ,ResendIfRejected ,LocalEquivalent ,Positioning_ExchangeRate ,IsFeesXAPICall ,FeesXAPICallSequence ,AccountFees,CheckCondBeforeEvaluation ,La
+stChange @maxid+10,1010,160,916,80,80,0,1,0,'','',0,NULL,'',1,'Aug 20 2007  6:48PM','AME\sqladmin',NULL,NULL,0
+insert into BankTranXAPICode(ID,Bank ,TranID ,XAPICode ,Seq ,ReversalSeq ,AllowPositioning ,HasCondition ,ResendIfRejected ,LocalEquivalent ,Positioning_ExchangeRate ,IsFeesXAPICall ,FeesXAPICallSequence ,AccountFees,CheckCondBeforeEvaluation ,La
+stChange @maxid+11,1010,160,904,95,95,1,1,0,'(FLD_9*FLD_1000040)','FLD_1000040',0,NULL,'',1,'Mar 17 2009 12:10PM','AME\sqladmin',NULL,NULL,0
+insert into BankTranXAPICode(ID,Bank ,TranID ,XAPICode ,Seq ,ReversalSeq ,AllowPositioning ,HasCondition ,ResendIfRejected ,LocalEquivalent ,Positioning_ExchangeRate ,IsFeesXAPICall ,FeesXAPICallSequence ,AccountFees,CheckCondBeforeEvaluation ,La
+stChange @maxid+12,1010,160,904,100,100,1,1,0,'(FLD_9*FLD_1000040)','FLD_1000040',0,NULL,'',1,'Mar 17 2009 12:11PM','AME\sqladmin',NULL,NULL,0
+insert into BankTranXAPICode(ID,Bank ,TranID ,XAPICode ,Seq ,ReversalSeq ,AllowPositioning ,HasCondition ,ResendIfRejected ,LocalEquivalent ,Positioning_ExchangeRate ,IsFeesXAPICall ,FeesXAPICallSequence ,AccountFees,CheckCondBeforeEvaluation ,La
+stChange @maxid+13,1010,160,904,200,200,0,1,0,'','',0,NULL,'',1,'Jun  4 2009  9:53AM','AME\sqladmin',NULL,NULL,0
+insert into BankTranXAPICode(ID,Bank ,TranID ,XAPICode ,Seq ,ReversalSeq ,AllowPositioning ,HasCondition ,ResendIfRejected ,LocalEquivalent ,Positioning_ExchangeRate ,IsFeesXAPICall ,FeesXAPICallSequence ,AccountFees,CheckCondBeforeEvaluation ,La
+stChange @maxid+14,1010,160,915,210,210,0,1,0,'','',0,NULL,'',1,'Nov 11 2009  3:28PM','AME\sqladmin',NULL,NULL,0
+
+DELETE FROM tableid WHERE TableName ='BankTranXAPICode' and fieldname='ID'        
+Declare @TableIndex int        
+select @TableIndex = isnull(max(ID), 0) + 1 from BankTranXAPICode        
+insert into tableid values ('BankTranXAPICode','ID',@TableIndex)
+delete from TranXAPICodeParam where TranXAPICodeID in (select Id  from BankTranXAPICode where TranID = 160)
+-- get transaction positioning --
+delete from RulesTranPositioning where TranID = 160
+
+---------------------------------------------------------------------
+exec dbo.Next_Table_MaxID 'RulesTranPositioning','ID',@XAPIID output 
+
+
+-------------------
+set @maxid=@XAPIID 
+
+                                                                                                                                                                                                                      
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into RulesTranPositioning(ID,TranID ,Seq ,Positioning_Currency1_FieldId ,Positioning_Currency2_FieldId ,HasCondition ,OperandsDataType ,Operand1 ,ConditionalOperator ,Operand2 ,LastChanged ,Updator) select  @maxid+0,160,1000,40,305,0,'','','','','Apr 20 2005  1:29PM','GFSDOMAIN\mshawky'
+
+DELETE FROM tableid WHERE TableName ='RulesTranPositioning' and fieldname='ID'        
+select @TableIndex = isnull(max(ID), 0) + 1 from RulesTranPositioning        
+insert into tableid values ('RulesTranPositioning','ID',@TableIndex)         
+        
+-- get transaction steps --
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+---------------------------------------------------------------------------------------------------------------------------------------------------------- ------------------------------- ------------------------------- ------------------------------- ------------------------------- ------------------------------- ------------------------------------------------------------------------------------------------------- ------------------------------------------- ------------------------------------------- ------------------------------------------- ------------------------------------------- ------------------------------
+insert into RulesTranSteps(TranID ,StepSequence ,StepType ,StepDisabled ,ReEntryStep ,Action ,Developer ,LastChanged ,Updator ,Created ,RowStatus) select  160,                            20,                             305,                            0,                              0,                              'JournalInsert',                                                                                        'G',                                        'Oct 20 2010 12:18PM',                      'G',                                        'Aug 24 2004 11:51AM',                      1
+insert into RulesTranSteps(TranID ,StepSequence ,StepType ,StepDisabled ,ReEntryStep ,Action ,Developer ,LastChanged ,Updator ,Created ,RowStatus) select  160,                            22,                             413,                            0,                              1,                              'SendToPhoenixWithInsertCTSData',                                                                       'G',                                        'May  7 2012 12:51PM',                      'G',                                        'Sep  6 2004  9:38PM',                      1
+insert into RulesTranSteps(TranID ,StepSequence ,StepType ,StepDisabled ,ReEntryStep ,Action ,Developer ,LastChanged ,Updator ,Created ,RowStatus) select  160,                            23,                             413,                            1,                              0,                              'SendToPhoenix',                                                                                        'G',                                        'May  7 2012 12:51PM',                      'G',                                        'Sep 15 2008 11:49PM',                      1
+insert into RulesTranSteps(TranID ,StepSequence ,StepType ,StepDisabled ,ReEntryStep ,Action ,Developer ,LastChanged ,Updator ,Created ,RowStatus) select  160,                            24,                             100,                            0,                              0,                              'UpdateTCDAccountState',                                                                                'FAISAL\sqladmin',                          'Nov 18 2012 12:06PM',                      'FAISAL\sqladmin',                          'Nov 18 2012 12:06PM',                      1
+insert into RulesTranSteps(TranID ,StepSequence ,StepType ,StepDisabled ,ReEntryStep ,Action ,Developer ,LastChanged ,Updator ,Created ,RowStatus) select  160,                            25,                             1000000,                        1,                              0,                              'SendIFXRequest',                                                                                       'G',                                        'Mar  2 2008 12:44PM',                      'G',                                        'Mar  2 2008 12:44PM',                      1
+insert into RulesTranSteps(TranID ,StepSequence ,StepType ,StepDisabled ,ReEntryStep ,Action ,Developer ,LastChanged ,Updator ,Created ,RowStatus) select  160,                            70,                             100,                            1,                              0,                              'VAPostingNotification',                                                                                'AME\mahmoud.yousef',                       'Jan 30 2023  8:57AM',                      'AME\mahmoud.yousef',                       'Jan 30 2023  8:56AM',                      1
+insert into RulesTranSteps(TranID ,StepSequence ,StepType ,StepDisabled ,ReEntryStep ,Action ,Developer ,LastChanged ,Updator ,Created ,RowStatus) select  160,                            80,                             305,                            0,                              1,                              'JournalUpdate',                                                                                        'G',                                        'Jan 30 2023  8:57AM',                      'AME\mahmoud.yousef',                       'Aug 24 2004 11:53AM',                      1
+
+-- declare cursor to get all parameters
+DECLARE @NewTranXAPICodeID int
+select @NewTranXAPICodeID  = ID from BankTranXAPICode where TranID = 160 and seq = 1
+                                                                                                                                                            
+----------------------------------------------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                                                                   
+-------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate1',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate2',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtEffectiveDt','BusinessDate','Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtTranDt','BusinessDate','Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt1','FLD_9','Jun  9 2008 11:55AM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt2',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnBranchNo','FLD_260','Jun 19 2014 11:11PM','CBD\Cluster_ethsql'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo1','NULL','Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo2','NULL','Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnEmployeeId','FLD_1000094','Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt1',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt2',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnInteger2',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPayeeNo',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCC',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCCAmt',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixTC',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPTID',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate1',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate2',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate3',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate4',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate5',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate6',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRateIndexID',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnSupervisorId',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranCode',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranType',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo1','"GL.Teller.CashInHand"','Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo2',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType1','"GL"','Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType2',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType1','"GL"','Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType2',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDepLoan','"GL"','Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDescription','FLD_232','Jun 21 2014  9:01AM','CBD\ahmd2786'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDeviceLocation',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency','FLD_40','Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency2',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psOrigReferenceNo',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psReversal','FLD_15','Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString1',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString2',NULL,'Jun  9 2008 11:55AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psUserName','FLD_1000095','Jun  9 2008 11:55AM','CBD\teller2'
+
+select @NewTranXAPICodeID  = ID from BankTranXAPICode where TranID = 160 and seq = 5
+                                                                                                                                                            
+----------------------------------------------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,1,'smalldatetime','FLD_1641','>','BusinessDate','','AME\mahmoud.yousef','AME\mahmoud.yousef','Aug 15 2022  9:35AM'
+
+                                                                                                   
+-------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate1','NULL','Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate2','NULL','Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtEffectiveDt','BusinessDate','Aug 15 2022  9:39AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtTranDt','BusinessDate','Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt1','FLD_9','Aug 15 2022  9:35AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt2',NULL,'Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo1','NULL','Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo2','NULL','Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt1',NULL,'Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt2',NULL,'Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPayeeNo','NULL','Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCC','NULL','Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixTC',NULL,'Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPTID',NULL,'Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate1',NULL,'Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate2',NULL,'Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate3',NULL,'Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate4',NULL,'Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate5',NULL,'Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate6',NULL,'Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRateIndexID',NULL,'Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranCode',NULL,'Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo1','"GL.Branch.CashInTransit"','Aug 15 2022  9:32AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo2','NULL','Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType1','"GL"','Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType2','NULL','Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType1','"GL"','Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType2','NULL','Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDepLoan','"GL"','Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDescription','FLD_147','Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDeviceLocation','NULL','Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency','"AED"','Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency2','NULL','Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psReversal','FLD_15','Aug 15 2022  9:31AM','AME\mahmoud.yousef'
+
+select @NewTranXAPICodeID  = ID from BankTranXAPICode where TranID = 160 and seq = 7
+                                                                                                                                                            
+----------------------------------------------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,1,'smalldatetime','FLD_1641','>','BusinessDate','','AME\mahmoud.yousef','AME\mahmoud.yousef','Aug 15 2022  9:38AM'
+
+                                                                                                   
+-------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate1','NULL','Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate2','NULL','Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtEffectiveDt','FLD_1641','Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtTranDt','BusinessDate','Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt1','FLD_9','Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt2',NULL,'Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo1','NULL','Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo2','NULL','Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt1',NULL,'Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt2',NULL,'Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPayeeNo','NULL','Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCC','NULL','Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixTC',NULL,'Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPTID',NULL,'Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate1',NULL,'Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate2',NULL,'Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate3',NULL,'Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate4',NULL,'Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate5',NULL,'Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate6',NULL,'Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRateIndexID',NULL,'Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranCode',NULL,'Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo1','"GL.Branch.CashInTransit"','Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo2','NULL','Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType1','"GL"','Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType2','NULL','Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType1','"GL"','Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType2','NULL','Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDepLoan','"GL"','Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDescription','FLD_147','Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDeviceLocation','NULL','Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency','"AED"','Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency2','NULL','Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psReversal','FLD_15','Aug 15 2022  9:37AM','AME\mahmoud.yousef'
+
+select @NewTranXAPICodeID  = ID from BankTranXAPICode where TranID = 160 and seq = 10
+                                                                                                                                                            
+----------------------------------------------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,1,'char','FLD_172','IN','"Active","RenewPending","Restricted"','And','AME\mahmoud.yousef','AME\mahmoud.yousef','Aug 15 2022 11:08AM'
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,2,'char','FLD_1293','<>','""','','AME\mahmoud.yousef','AME\mahmoud.yousef','Aug 15 2022 11:08AM'
+
+                                                                                                   
+-------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate1',NULL,'May 10 2006  3:56PM','GFSDOMAIN\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate2',NULL,'May 10 2006  2:51PM','GFSDOMAIN\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtEffectiveDt','FLD_1641','Aug 15 2022  9:29AM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtTranDt','BusinessDate','Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt1','FLD_9*FLD_1000040/FLD_1000039','Apr 20 2005  1:24PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt2',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnBranchNo','FLD_260','Jun 19 2014 11:11PM','CBD\Cluster_ethsql'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo1','FLD_1293','Apr 20 2005  1:24PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo2',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnEmployeeId','FLD_1000094','Nov 27 2006 11:27AM','GFSDOMAIN\myoussif'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt1',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt2',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnInteger2',NULL,'Apr 15 2007  1:54PM','GFSDOMAIN\teller02'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPayeeNo',NULL,'Jun  1 2005 12:04PM','gfsdomain\gfsmtsadmin'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCC',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCCAmt',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixTC','101','Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPTID',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate1',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate2',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate3',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate4',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate5',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate6',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRateIndexID',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnSupervisorId',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranCode',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranType',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo1','FLD_7','Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo2',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType1','FLD_148','Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType2',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType1','FLD_1000090','Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType2',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDepLoan','FLD_1000091','Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDescription','FLD_232 & " - " & Dumy_CR_VirtualAccount','Jun 22 2018  7:14AM','CBD\AKHI0587'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDeviceLocation','"(CASH DEP)"','Apr 20 2005  1:24PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency','FLD_305','Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency2',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psOrigReferenceNo',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psReversal','FLD_15','Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString1',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString2',NULL,'Jul  7 2005  4:34PM','GFSDOMAIN\osama123'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psUserName','FLD_1000095','Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+
+select @NewTranXAPICodeID  = ID from BankTranXAPICode where TranID = 160 and seq = 20
+                                                                                                                                                            
+----------------------------------------------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,1,'char','FLD_172','IN','"UnFunded","Rene"','And','CBD\SANJ17','CBD\SANJ17','Jun  4 2009 10:14AM'
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,2,'char','FLD_1293','<>','""','','CBD\SANJ17','CBD\SANJ17','Jun  4 2009 10:14AM'
+
+                                                                                                   
+-------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate1',NULL,'May 10 2006  3:56PM','GFSDOMAIN\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate2',NULL,'May 10 2006  2:51PM','GFSDOMAIN\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtEffectiveDt','BusinessDate','Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtTranDt','BusinessDate','Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt1','FLD_9*FLD_1000040/FLD_1000039','Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt2',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnBranchNo','FLD_260','Jun 19 2014 11:11PM','CBD\Cluster_ethsql'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo1','FLD_1293','Apr 20 2005  1:24PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo2','NULL','Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnEmployeeId','FLD_1000094','Nov 27 2006 11:27AM','GFSDOMAIN\myoussif'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt1',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt2',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnInteger2',NULL,'Apr 15 2007  1:54PM','GFSDOMAIN\teller02'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPayeeNo',NULL,'Jun  1 2005 12:04PM','gfsdomain\gfsmtsadmin'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCC',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCCAmt',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixTC','100','Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPTID',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate1',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate2',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate3',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate4',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate5',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate6',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRateIndexID',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnSupervisorId',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranCode',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranType',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo1','FLD_7','Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo2',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType1','FLD_148','Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType2',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType1','FLD_1000090','Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType2',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDepLoan','FLD_1000091','Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDescription','FLD_232 & " - " & Dumy_CR_VirtualAccount','Jun 22 2018  7:14AM','CBD\AKHI0587'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDeviceLocation','"(CASH DEP)"','Apr 20 2005  1:24PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency','FLD_305','Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency2',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psOrigReferenceNo',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psReversal','FLD_15','Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString1',NULL,'Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString2',NULL,'Jul  7 2005  4:34PM','GFSDOMAIN\osama123'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psUserName','FLD_1000095','Apr 20 2005  1:24PM','GFSDOMAIN\mshawky'
+
+select @NewTranXAPICodeID  = ID from BankTranXAPICode where TranID = 160 and seq = 40
+                                                                                                                                                            
+----------------------------------------------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,10,'char','FLD_1000146','>','0','','AME\SQLADMIN','AME\SQLADMIN','Aug 21 2019 11:39AM'
+
+                                                                                                   
+-------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate1','NULL','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate2','NULL','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtEffectiveDt','BusinessDate','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtTranDt','BusinessDate','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt1','FLD_1000146','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt2',NULL,'Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnBranchNo','FLD_260','Jun 19 2014 11:11PM','CBD\Cluster_ethsql'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo1','NULL','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo2','NULL','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnEmployeeId','FLD_1000094','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt1',NULL,'Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt2',NULL,'Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnInteger2','NULL','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPayeeNo','NULL','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCC','NULL','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCCAmt',NULL,'Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixTC',NULL,'Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPTID',NULL,'Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate1',NULL,'Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate2',NULL,'Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate3',NULL,'Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate4',NULL,'Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate5',NULL,'Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate6',NULL,'Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRateIndexID',NULL,'Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnSupervisorId',NULL,'Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranCode',NULL,'Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranType',NULL,'Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo1','"GL.Bank.Exchange Gain"','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo2','NULL','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType1','"GL"','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType2','NULL','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType1','"GL"','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType2','NULL','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDepLoan','"GL"','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDescription','FLD_147','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDeviceLocation','NULL','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency','"AED"','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency2','NULL','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psOrigReferenceNo','NULL','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psReversal','FLD_15','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString1','NULL','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString2','NULL','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psUserName','FLD_1000095','Jun 28 2008 10:56AM','VPCGFSDOMAIN\teller2'
+
+select @NewTranXAPICodeID  = ID from BankTranXAPICode where TranID = 160 and seq = 45
+                                                                                                                                                            
+----------------------------------------------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,10,'char','FLD_1000146','<','0','And','AME\SQLADMIN','AME\SQLADMIN','Aug 21 2019 11:39AM'
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,20,'char','1','=','2','','AME\SQLADMIN','AME\SQLADMIN','Aug 21 2019 11:39AM'
+
+                                                                                                   
+-------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate1','NULL','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate2','NULL','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtEffectiveDt','BusinessDate','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtTranDt','BusinessDate','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt1','FLD_1000146 *(-1)','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt2',NULL,'Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnBranchNo','FLD_260','Jun 19 2014 11:11PM','CBD\Cluster_ethsql'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo1','NULL','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo2','NULL','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnEmployeeId','FLD_1000094','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt1',NULL,'Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt2',NULL,'Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnInteger2','NULL','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPayeeNo','NULL','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCC','NULL','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCCAmt',NULL,'Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixTC',NULL,'Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPTID',NULL,'Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate1',NULL,'Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate2',NULL,'Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate3',NULL,'Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate4',NULL,'Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate5',NULL,'Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate6',NULL,'Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRateIndexID',NULL,'Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnSupervisorId',NULL,'Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranCode',NULL,'Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranType',NULL,'Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo1','"GL.Bank.Exchange Gain"','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo2','NULL','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType1','"GL"','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType2','NULL','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType1','"GL"','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType2','NULL','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDepLoan','"GL"','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDescription','FLD_147','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDeviceLocation','NULL','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency','"AED"','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency2','NULL','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psOrigReferenceNo','NULL','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psReversal','FLD_15','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString1','NULL','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString2','NULL','Dec 14 2008  4:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psUserName','FLD_1000095','Dec 14 2008  4:10PM','CBD\teller1'
+
+select @NewTranXAPICodeID  = ID from BankTranXAPICode where TranID = 160 and seq = 50
+                                                                                                                                                            
+----------------------------------------------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,1,'char','FLD_1918','=','"DP"','And','CBDDEV\Taher','CBDDEV\Taher','May 23 2019  3:22PM'
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,2,'char','FLD_217','<>','0','And','CBDDEV\Taher','CBDDEV\Taher','May 23 2019  3:22PM'
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,3,'char','FLD_1934','NOTCONTAINS','"ThresholdCharge"','','CBDDEV\Taher','CBDDEV\Taher','May 23 2019  3:22PM'
+
+                                                                                                   
+-------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate1',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate2',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtEffectiveDt','BusinessDate','Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtTranDt','BusinessDate','Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt1','FLD_1955','Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt2',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnBranchNo','FLD_260','Jun 19 2014 11:11PM','CBD\Cluster_ethsql'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo1',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo2',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnEmployeeId','FLD_1000094','Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt1',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt2',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnInteger2',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPayeeNo',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCC','FLD_1956','Apr 24 2019 10:13AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCCAmt','FLD_1955','Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixTC',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPTID',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate1',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate2',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate3',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate4',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate5',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate6',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRateIndexID',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnSupervisorId',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranCode',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranType',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo1','FLD_1922','Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo2',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType1','FLD_1951','Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType2',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType1','FLD_1931','Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType2',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDepLoan','FLD_1950','Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDescription','FLD_1934','Jun  9 2008 11:39AM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDeviceLocation','"(CASH DEP)"','Jun  9 2008 11:39AM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency','FLD_1921','Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency2',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psOrigReferenceNo',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psReversal','FLD_15','Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString1',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString2',NULL,'Jun  9 2008 11:39AM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psUserName','FLD_1000095','Jun  9 2008 11:39AM','CBD\teller2'
+
+select @NewTranXAPICodeID  = ID from BankTranXAPICode where TranID = 160 and seq = 60
+                                                                                                                                                            
+----------------------------------------------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,1,'char','FLD_1918','=','"DP"','And','CBDDEV\Taher','CBDDEV\Taher','May 23 2019  3:24PM'
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,2,'char','FLD_217','<>','0','And','CBDDEV\Taher','CBDDEV\Taher','May 23 2019  3:24PM'
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,3,'char','FLD_1934','CONTAINS','"ThresholdCharge"','','CBDDEV\Taher','CBDDEV\Taher','May 23 2019  3:24PM'
+
+                                                                                                   
+-------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate1',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate2',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtEffectiveDt','BusinessDate','Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtTranDt','BusinessDate','Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt1','FLD_1955','Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt2',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnBranchNo','FLD_260','Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo1',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo2',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnEmployeeId','FLD_1000094','Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt1',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt2',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnInteger2',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPayeeNo',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCC','615','Apr 24 2019 10:32AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCCAmt','FLD_1955','Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixTC',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPTID',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate1',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate2',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate3',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate4',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate5',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate6',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRateIndexID',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnSupervisorId',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranCode',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranType',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo1','FLD_1922','Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo2',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType1','FLD_1951','Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType2',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType1','FLD_1931','Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType2',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDepLoan','FLD_1950','Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDescription','"Cash Deposit Charge"','May 23 2019  3:26PM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDeviceLocation','"(CASH DEP)"','Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency','FLD_1921','Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency2',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psOrigReferenceNo',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psReversal','FLD_15','Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString1',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString2',NULL,'Apr 24 2019 10:30AM','CBDDEV\taher'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psUserName','FLD_1000095','Apr 24 2019 10:30AM','CBDDEV\taher'
+
+select @NewTranXAPICodeID  = ID from BankTranXAPICode where TranID = 160 and seq = 70
+                                                                                                                                                            
+----------------------------------------------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,1,'char','FLD_1918','=','"GL"','And','cbd\Fattah','cbd\Fattah','May 20 2009 12:50PM'
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,2,'char','FLD_1000041','<>','0','','cbd\Fattah','cbd\Fattah','May 20 2009 12:50PM'
+
+                                                                                                   
+-------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate1',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate2',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtEffectiveDt','BusinessDate','Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtTranDt','BusinessDate','Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt1','FLD_1955','Aug 20 2007  6:47PM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt2',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnBranchNo','FLD_260','Jun 19 2014 11:11PM','CBD\Cluster_ethsql'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo1','NULL','Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo2','NULL','Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnEmployeeId','FLD_1000094','Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt1',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt2',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnInteger2',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPayeeNo',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCC',NULL,'Aug 20 2007  6:47PM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCCAmt',NULL,'Aug 20 2007  6:47PM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixTC',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPTID',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate1',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate2',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate3',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate4',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate5',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate6',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRateIndexID',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnSupervisorId',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranCode',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranType',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo1','FLD_1933','Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo2',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType1','"GL"','Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType2',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType1','"GL"','Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType2',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDepLoan','"GL"','Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDescription','FLD_232','Jun 21 2014  9:00AM','CBD\ahmd2786'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDeviceLocation',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency','FLD_1921','Aug 20 2007  6:47PM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency2',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psOrigReferenceNo',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psReversal','FLD_15','Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString1',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString2',NULL,'Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psUserName','FLD_1000095','Aug 20 2007  6:47PM','GFSDOMAIN\hebrahim'
+
+select @NewTranXAPICodeID  = ID from BankTranXAPICode where TranID = 160 and seq = 80
+                                                                                                                                                            
+----------------------------------------------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,1,'char','FLD_1918','=','"Cash"','And','cbd\teller2','cbd\teller2','Jun  9 2008 12:50PM'
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,2,'char','FLD_1000041','<>','0','','cbd\teller2','cbd\teller2','Jun  9 2008 12:50PM'
+
+                                                                                                   
+-------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate1',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate2',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtEffectiveDt','BusinessDate','Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtTranDt','BusinessDate','Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt1','FLD_1955','Aug 20 2007  6:48PM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt2',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnBranchNo','FLD_260','Jun 19 2014 11:11PM','CBD\Cluster_ethsql'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo1','NULL','Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo2','NULL','Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnEmployeeId','FLD_1000094','Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt1',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt2',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnInteger2',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPayeeNo',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCC',NULL,'Aug 20 2007  6:48PM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCCAmt',NULL,'Aug 20 2007  6:48PM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixTC',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPTID',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate1',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate2',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate3',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate4',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate5',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate6',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRateIndexID',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnSupervisorId',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranCode',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranType',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo1','"GL.Teller.CashInHand"','Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo2',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType1','"GL"','Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType2',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType1','"GL"','Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType2',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDepLoan','"GL"','Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDescription','FLD_232','Jun 21 2014  9:01AM','CBD\ahmd2786'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDeviceLocation',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency','FLD_1921','Aug 20 2007  6:48PM','CBD\teller2'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency2',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psOrigReferenceNo',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psReversal','FLD_15','Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString1',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString2',NULL,'Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psUserName','FLD_1000095','Aug 20 2007  6:48PM','GFSDOMAIN\hebrahim'
+
+select @NewTranXAPICodeID  = ID from BankTranXAPICode where TranID = 160 and seq = 95
+                                                                                                                                                            
+----------------------------------------------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,1,'char','FLD_172','IN','"Active", "RenewPending","Restricted"','And','CBD\SABJ0186','CBD\SABJ0186','Dec  8 2009  4:13PM'
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,2,'char','FLD_1293','=','""','','CBD\SABJ0186','CBD\SABJ0186','Dec  8 2009  4:13PM'
+
+                                                                                                   
+-------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate1',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate2',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtEffectiveDt','BusinessDate','Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtTranDt','BusinessDate','Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt1','FLD_9*FLD_1000040/FLD_1000039','Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt2',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnBranchNo','FLD_260','Jun 19 2014 11:11PM','CBD\Cluster_ethsql'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo1',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo2',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnEmployeeId','FLD_1000094','Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt1',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt2',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnInteger2',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPayeeNo',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCC',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCCAmt',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixTC','101','Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPTID',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate1',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate2',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate3',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate4',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate5',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate6',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRateIndexID',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnSupervisorId',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranCode',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranType',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo1','FLD_7','Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo2',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType1','FLD_148','Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType2',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType1','FLD_1000090','Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType2',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDepLoan','FLD_1000091','Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDescription','FLD_232 & " - " & Dumy_CR_VirtualAccount','Jun 22 2018  7:14AM','CBD\AKHI0587'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDeviceLocation','"(CASH DEP)"','Mar 17 2009 12:10PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency','FLD_305','Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency2',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psOrigReferenceNo',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psReversal','FLD_15','Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString1',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString2',NULL,'Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psUserName','FLD_1000095','Mar 17 2009 12:10PM','VPCGFSDOMAIN\teller1'
+
+select @NewTranXAPICodeID  = ID from BankTranXAPICode where TranID = 160 and seq = 100
+                                                                                                                                                            
+----------------------------------------------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,1,'char','FLD_172','IN','"UnFunded","Rene"','And','CBD\SANJ17','CBD\SANJ17','Jun  4 2009 10:15AM'
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,2,'char','FLD_1293','=','""','','CBD\SANJ17','CBD\SANJ17','Jun  4 2009 10:15AM'
+
+                                                                                                   
+-------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate1',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate2',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtEffectiveDt','BusinessDate','Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtTranDt','BusinessDate','Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt1','FLD_9*FLD_1000040/FLD_1000039','Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt2',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnBranchNo','FLD_260','Jun 19 2014 11:11PM','CBD\Cluster_ethsql'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo1',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo2','NULL','Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnEmployeeId','FLD_1000094','Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt1',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt2',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnInteger2',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPayeeNo',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCC',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCCAmt',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixTC','100','Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPTID',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate1',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate2',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate3',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate4',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate5',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate6',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRateIndexID',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnSupervisorId',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranCode',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranType',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo1','FLD_7','Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo2',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType1','FLD_148','Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType2',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType1','FLD_1000090','Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType2',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDepLoan','FLD_1000091','Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDescription','FLD_232 & " - " & Dumy_CR_VirtualAccount','Jun 22 2018  7:14AM','CBD\AKHI0587'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDeviceLocation','"(CASH DEP)"','Mar 17 2009 12:11PM','CBD\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency','FLD_305','Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency2',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psOrigReferenceNo',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psReversal','FLD_15','Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString1',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString2',NULL,'Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psUserName','FLD_1000095','Mar 17 2009 12:11PM','VPCGFSDOMAIN\teller1'
+
+select @NewTranXAPICodeID  = ID from BankTranXAPICode where TranID = 160 and seq = 200
+                                                                                                                                                            
+----------------------------------------------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,1,'char','FLD_172','=','"Active"','And','cbd\teller1','cbd\teller1','Sep  6 2009  1:57PM'
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,2,'char','FLD_7','=','"3"','And','cbd\teller1','cbd\teller1','Sep  6 2009  1:57PM'
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,3,'char','1','=','2','','cbd\teller1','cbd\teller1','Sep  6 2009  1:57PM'
+
+                                                                                                   
+-------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate1',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate2',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtEffectiveDt',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtTranDt',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt1',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt2',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnBranchNo','FLD_260','Jun 19 2014 11:11PM','CBD\Cluster_ethsql'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo1',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo2',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnEmployeeId',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt1',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt2',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnInteger2',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPayeeNo',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCC',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCCAmt',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixTC',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPTID',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate1',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate2',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate3',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate4',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate5',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate6',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRateIndexID',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnSupervisorId',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranCode',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranType',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo1',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo2',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType1',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType2',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType1',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType2',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDepLoan',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDescription',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDeviceLocation',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency2',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psOrigReferenceNo',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psReversal',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString1',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString2',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psUserName',NULL,'Jun  4 2009  9:53AM','CBD\GFSMTSUser'
+
+select @NewTranXAPICodeID  = ID from BankTranXAPICode where TranID = 160 and seq = 210
+                                                                                                                                                            
+----------------------------------------------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,1,'char','FLD_1918','<>','"DP"','And','CBD\Fattah','CBD\Fattah','Nov 11 2009  3:28PM'
+insert into XAPIConditions(BankTranXAPICodeID ,Seq ,OperandsDataType ,Operand1 ,Operator ,Operand2 ,LogicalOperator ,Creator ,Updator ,LastChanged) select  @NewTranXAPICodeID,2,'char','FLD_1000041','<>','0','','CBD\Fattah','CBD\Fattah','Nov 11 2009  3:28PM'
+
+                                                                                                   
+-------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate1',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtDate2',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtEffectiveDt','BusinessDate','Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pdtTranDt','BusinessDate','Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt1','FLD_1955','Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnAmt2',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnBranchNo','FLD_260','Jun 19 2014 11:11PM','CBD\Cluster_ethsql'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo1','NULL','Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnCheckNo2','NULL','Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnEmployeeId','FLD_1000094','Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt1',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnFloatAmt2',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnInteger2',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPayeeNo',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCC',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixCCAmt',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPhoenixTC',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnPTID',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate1',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate2',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate3',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate4',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate5',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRate6',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnRateIndexID',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnSupervisorId',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranCode',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'pnTranType',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo1','"GL.Bank.Fees"','Jan  3 2021 11:41PM','AME\mahmoud.yousef'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctNo2',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType1','"GL"','Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psAcctType2',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType1','"GL"','Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psApplType2',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDepLoan','"GL"','Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDescription','FLD_147','Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psDeviceLocation',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency','FLD_1921','Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psISOCurrency2',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psOrigReferenceNo',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psReversal','FLD_15','Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString1',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psString2',NULL,'Nov 11 2009  3:28PM','CBD\fattah'
+insert into TranXAPICodeParam(TranXAPICodeID ,ParamName ,ParamValue ,LastChanged ,Updator) select  @NewTranXAPICodeID,'psUserName','FLD_1000095','Nov 11 2009  3:28PM','CBD\fattah'
+
